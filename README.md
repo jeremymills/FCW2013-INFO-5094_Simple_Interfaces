@@ -18,5 +18,5 @@ working effectively within teams on software development projects.
 * **Bio:** [student]
 
 ### Jaide Haynes
-* **Email:** [FILL THIS IN]
+* **Email:** [j_haynes9@fanshaweonline.ca]
 * **Bio:** [student]
