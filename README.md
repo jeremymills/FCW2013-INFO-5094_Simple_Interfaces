@@ -20,3 +20,7 @@ working effectively within teams on software development projects.
 ### Jaide Haynes
 * **Email:** [FILL THIS IN]
 * **Bio:** [student]
+
+### Carlie Hiel
+* **Email:** [carlie.hiel@gmail.com]
+* **Bio:** [student]
