@@ -9,33 +9,40 @@ namespace Data\LinkedLists;
  * Require INode
  * @ignore
  */
-require_once __DIR__ . '/DoublyLinkedNode.php';
+require_once __DIR__ . '/SinglyLinkedNode.php';
 /**
- * DoublyLinkedList class
+ * POD Class to hold Plain Old Data
  *
- * @package Data\LinkedLists
+ * @package POD
  * @author Jeremy Mills <j_mills44@fanshaweonline.ca>
  * @copyright (c) Jeremy Mills
  * @version 1.0.0
  */
 
-class DoublyLinkedList implements \IDoublyLinkedList
+class SinglyLinkedList implements \ILinkedList
 {
     /**
-     * Private Mem Var to hold the tail node
+     * Private Mem Var to hold the current ISinglyLinkedNode object
      *
      * @access private
-     * @var IDoublyLinkedList holds the tail node of list
+     * @var ISinglyLinkedNode datatype to hold current node data
      */
-    private $_tail_node;
+    private $_current;
+    /**
+     * Private Mem Var to hold the root node of the ISinglyLinkedNode
+     *
+     * @access private
+     * @var ISinglyLinkedNode datatype to hold root node data
+     */
+    private $_root_node;
     
     /**
-     * Construct DoublyLinkedList class
+     * Construct SinglyLinkedList class
      *
      * @access public
-     * @param IDoublyLinkedList Root node for the linked list
+     * @param ISinglyLinkedList Root node for the linked list
      */
-    public function __construct(DoublyLinkedNode $data = null)
+    public function __construct(ISinglyLinkedNode $data = null)
     {
         
     }
@@ -44,7 +51,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns the first element in the list.
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the first IDoublyLinkedNode in the list, otherwise returns NULL.
+     * @return ISinglyLinkedNode|null Returns the first ISinglyLinkedNode in the list, otherwise returns NULL.
      */
     public function getFirst()
     {
@@ -55,7 +62,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns the last element in the list.
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the last IDoublyLinkedNode in the list, otherwise returns NULL.
+     * @return ISinglyLinkedNode|null Returns the last ISinglyLinkedNode in the list, otherwise returns NULL.
      */
     public function getLast()
     {
@@ -65,7 +72,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     /**
      * Adds a value onto the end of the list.
      *
-     * This method will create a new IDoublyLinkedNode instance assigning a
+     * This method will create a new ISinglyLinkedNode instance assigning a
      * numeric key value to the node and the value is assigned to the
      * node's value property.
      *
@@ -79,16 +86,16 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Adds an IDoublyLinkedNode instance onto the end of the list.
+     * Adds an ISinglyLinkedNode instance onto the end of the list.
      *
      * The node that is to be added to the list should have its key reset so that
      * it is the next key in the list's key sequence.
      *
      * @access public
-     * @param IDoublyLinkedNode $node The IDoublyLinkedNode to add.
+     * @param ISinglyLinkedNode $node The ISinglyLinkedNode to add.
      * @return mixed The key value of the node that was added.
      */
-    public function addNode(IDoublyLinkedNode $node)
+    public function addNode(ISinglyLinkedNode $node)
     {
         
     }
@@ -132,11 +139,11 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Returns the IDoublyLinkedNode object by the specified value.
+     * Returns the ISinglyLinkedNode object by the specified value.
      * 
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return IDoublyLinkedNode|null Returns the first IDoublyLinkedNode that contains the value, otherwise null.
+     * @return ISinglyLinkedNode|null Returns the first ISinglyLinkedNode that contains the value, otherwise null.
      */
     public function find($value)
     {
@@ -144,11 +151,11 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Returns an array of all IDoublyLinkedNodes found by the specified value.
+     * Returns an array of all ISinglyLinkedNodes found by the specified value.
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return array|null Returns an array with all the IDoublyLinkedNode instances whose value is equal to $value, otherwise returns null.
+     * @return array|null Returns an array with all the ISinglyLinkedNode instances whose value is equal to $value, otherwise returns null.
      */
     public function findAll($value)
     {
@@ -156,7 +163,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Returns the first IDoublyLinkedNode instance found by with the specified value.
+     * Returns the first ISinglyLinkedNode instance found by with the specified value.
      * 
      * @access public
      * @param mixed $value
@@ -167,14 +174,14 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Returns the last IDoublyLinkedNode instance found by the specified value.
+     * Returns the last ISinglyLinkedNode instance found by the specified value.
      *
      * The searching operations for this method are in reverse, therefore starting at the
      * bottom of the list. This is done so on purpose to reduce unneeded overhead.
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return IDoublyLinkedNode|null Returns the last IDoublyLinkedNode that contains the value, otherwise null if none found.
+     * @return ISinglyLinkedNode|null Returns the last ISinglyLinkedNode that contains the value, otherwise null if none found.
      */
     public function findLast($value)
     {
@@ -182,11 +189,11 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Returns the IDoublyLinkedNode at the specified $key.
+     * Returns the ISinglyLinkedNode at the specified $key.
      *
      * @access public
-     * @param mixed Contains the key of the IDoublyLinkedNode to get.
-     * @return mixed Returns the IDoublyLinkedNode at $key if found, otherwise null.
+     * @param mixed Contains the key of the ISinglyLinkedNode to get.
+     * @return mixed Returns the ISinglyLinkedNode at $key if found, otherwise null.
      */
     public function get($key)
     {
@@ -194,17 +201,17 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Inserts a new IDoublyLinkedNode at before the specified key.
+     * Inserts a new ISinglyLinkedNode at before the specified key.
      *
-     * The IDoublyLinkedNode instance is created within this method. When inserting, all nodes should
+     * The ISinglyLinkedNode instance is created within this method. When inserting, all nodes should
      * be shifted and key values shifted as well for all nodes that follow this newly inserted.
-     * Additionally, when inserting a new IDoublyLinkedNode, the key will be automatically generated as the
+     * Additionally, when inserting a new ISinglyLinkedNode, the key will be automatically generated as the
      * next numeric value in the sequence of nodes.
      *
      * @access public
-     * @param int $before Contains the key value to insert a new IDoublyLinkedNode before.
-     * @param mixed $value Contains the value used to create a new IDoublyLinkedNode with and inserted before $before.
-     * @return int Returns the newly create IDoublyLinkedNode's key.
+     * @param int $before Contains the key value to insert a new ISinglyLinkedNode before.
+     * @param mixed $value Contains the value used to create a new ISinglyLinkedNode with and inserted before $before.
+     * @return int Returns the newly create ISinglyLinkedNode's key.
      */
     public function insertBefore($before, $value)
     {
@@ -212,17 +219,17 @@ class DoublyLinkedList implements \IDoublyLinkedList
     }
     
     /**
-     * Inserts a new IDoublyLinkedNode after the specified key.
+     * Inserts a new ISinglyLinkedNode after the specified key.
      *
-     * The IDoublyLinkedNode instance is created within this method. When inserting, all nodes that are
+     * The ISinglyLinkedNode instance is created within this method. When inserting, all nodes that are
      * to follow (come after) this node should be shifted and key values shifted as well.
-     * Additionally, when inserting a new IDoublyLinkedNode, the key will be automatically generated
+     * Additionally, when inserting a new ISinglyLinkedNode, the key will be automatically generated
      * the next numeric value in the sequence of nodes.
      *
      * @access public
-     * @param int $after Contains the key value to insert a new IDoublyLinkedNode after.
-     * @param mixed $value Contains the value used to create a new IDoublyLinkedNode with and inserted before $after.
-     * @return int Returns the newly create IDoublyLinkedNode's key.
+     * @param int $after Contains the key value to insert a new ISinglyLinkedNode after.
+     * @param mixed $value Contains the value used to create a new ISinglyLinkedNode with and inserted before $after.
+     * @return int Returns the newly create ISinglyLinkedNode's key.
      */
     public function insertAfter($after, $value)
     {
@@ -244,7 +251,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns, but does not remove, the first node in the list. 
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the first node in the list. Will returns NULL if the list empty.
+     * @return ISinglyLinkedNode|null Returns the first node in the list. Will returns NULL if the list empty.
      */
     public function peek()
     {
@@ -255,7 +262,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns, but does not remove, the first node in the list. 
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the first node in the list. Will returns NULL if the list empty.
+     * @return ISinglyLinkedNode|null Returns the first node in the list. Will returns NULL if the list empty.
      */
     public function peekFirst()
     {
@@ -266,7 +273,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns, but does not remove, the last node in the list. 
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the last node in the list. Will returns NULL if the list empty.
+     * @return ISinglyLinkedNode|null Returns the last node in the list. Will returns NULL if the list empty.
      */
     public function peekLast()
     {
@@ -277,7 +284,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns and removes the first node in the list.
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
+     * @return ISinglyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
      */
     public function poll()
     {
@@ -288,7 +295,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns and removes the first node in the list.
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
+     * @return ISinglyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
      */
     public function pollFirst()
     {
@@ -299,7 +306,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Returns and removes the last node in the list.
      *
      * @access public
-     * @return IDoublyLinkedNode|null Returns the last node in the list. Will return NULL if the list is empty.
+     * @return ISinglyLinkedNode|null Returns the last node in the list. Will return NULL if the list is empty.
      */
     public function pollLast()
     {
@@ -320,7 +327,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     /**
      * Adds a new value onto the end of the list.
      *
-     * A new IDoublyLinkedNode instance will be created and the value assigned to the specified. A numeric
+     * A new ISinglyLinkedNode instance will be created and the value assigned to the specified. A numeric
      * key will be created based on the sequence (last numeric key + 1) and assigned to this node.
      *
      * @access public
@@ -386,9 +393,9 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * will be adjusted.
      *
      * @access public
-     * @param IDoublyLinkedNode $node The node to remove from the list.
+     * @param ISinglyLinkedNode $node The node to remove from the list.
      */
-    public function removeNode(IDoublyLinkedNode $node)
+    public function removeNode(ISinglyLinkedNode $node)
     {
         
     }
@@ -409,7 +416,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     /**
      * Sorts the list by using a callback to specify the value to compare on.
      *
-     * The callback should take one parameter of type IDoublyLinkedNode and return a single
+     * The callback should take one parameter of type ISinglyLinkedNode and return a single
      * value that will be used for comparison.
      *
      * @access public
