@@ -11,9 +11,9 @@ namespace Data\LinkedLists;
  */
 require_once __DIR__ . '/SinglyLinkedNode.php';
 /**
- * POD Class to hold Plain Old Data
+ * SinglyLinkedList class
  *
- * @package POD
+ * @package Data\LinkedLists
  * @author Jeremy Mills <j_mills44@fanshaweonline.ca>
  * @copyright (c) Jeremy Mills
  * @version 1.0.0

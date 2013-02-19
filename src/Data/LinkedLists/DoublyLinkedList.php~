@@ -11,9 +11,9 @@ namespace Data\LinkedLists;
  */
 require_once __DIR__ . '/DoublyLinkedNode.php';
 /**
- * DoublyLinkedList class
+ * POD Class to hold Plain Old Data
  *
- * @package Data\LinkedLists
+ * @package POD
  * @author Jeremy Mills <j_mills44@fanshaweonline.ca>
  * @copyright (c) Jeremy Mills
  * @version 1.0.0
