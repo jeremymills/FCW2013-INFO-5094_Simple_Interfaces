@@ -8,7 +8,20 @@ namespace Data\LinkedLists\Tests;
 
 require_once __DIR__ . '/../src/Data/LinkedLists/SinglyLinkedLists.php';
 
-class SinglyLinkedListTest extends PHPUnit_Framework_TestCase
+/**
+ * SinglyLInkedListTest Class extending PHPUnit_Framework_TestCase
+ *
+ * @package Data\LinkedLists\Tests
+ * 
+ * @author Alex Jones-Chick
+ * @author Jeremy Mills
+ * @author Jaide Haynes
+ * @author Carlie Hiel
+ * 
+ * @copyright 2013 INFO-5094 - Group A
+ * @version PHP 5.3
+ */
+class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * testInit tests __construct() function
