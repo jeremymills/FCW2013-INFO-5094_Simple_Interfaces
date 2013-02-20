@@ -6,133 +6,297 @@
  */
 namespace Data\LinkedLists\Tests;
 
-<<<<<<< HEAD
-class DoublyLinkedListTest extends PHPUnit_Framework_TestCase
-{
-       
-}
-=======
 require_once __DIR__ . '/../src/Data/LinkedLists/DoublyLinkedLists.php';
 
-    class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
+class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
 {
-    
-    public function __construct(){
+    /**
+     * testInit tests __construct() function
+     *
+     * @access public
+     */
+    public function testInit()
+    {
         
     }
     
-    public function testGetFirst(){
+    /**
+     * testGetFirst tests getFirst function
+     *
+     * @access public
+     */
+    public function testGetFirst()
+    {
         
     }
     
-    public function testGetLast(){
+    /**
+     * testGetLast tests getLast() function
+     *
+     * @access public
+     */
+    public function testGetLast()
+    {
     
     }
     
-    public function testAdd(){
+    /**
+     * testAdd tests add() function
+     *
+     * @access public
+     */
+    public function testAdd()
+    {
         
     }
     
-    public function testAddNode(){
+    /**
+     * testAddNode tests addNode() function
+     *
+     * @access public
+     */
+    public function testAddNode()
+    {
     
     }
     
-    public function testAsArray(){
+    /**
+     * testAsArray tests asArray() function
+     *
+     * @access public
+     */
+    public function testAsArray()
+    {
         
     }
     
-    public function testContainsKey(){
+    /**
+     * testContainsKey tests containsKey() function
+     *
+     * @access public
+     */
+    public function testContainsKey()
+    {
         
     }
     
-    public function testContains(){
+    /**
+     * testContains tests contains() function
+     *
+     * @access public
+     */
+    public function testContains()
+    {
     
     }
     
-    public function testFind(){
+    /**
+     * testFind tests find() function
+     *
+     * @access public
+     */
+    public function testFind()
+    {
         
     }
     
-    public function testFindAll(){
+    /**
+     * testFindAll tests findAll() function
+     *
+     * @access public
+     */
+    public function testFindAll()
+    {
         
     }
     
-    public function testFindFirst(){
+    /**
+     * testFindFirst tests findFirst() function
+     *
+     * @access public
+     */
+    public function testFindFirst()
+    {
     
     }
     
-    public function testFindLast(){
+    /**
+     * testFindLast tests findLast() function
+     *
+     * @access public
+     */
+    public function testFindLast()
+    {
         
     }
     
-    public function testGet(){
+    /**
+     * testGet tests get() function
+     *
+     * @access public
+     */
+    public function testGet()
+    {
         
     }
     
-    public function testInsertBefore(){
+    /**
+     * testInsertBefore tests insertBefore() function
+     *
+     * @access public
+     */
+    public function testInsertBefore()
+    {
         
     }
     
-    public function testInsertAfter(){
+    /**
+     * testInsertAfter tests insertAfter() function
+     *
+     * @access public
+     */
+    public function testInsertAfter()
+    {
     
     }
     
-    public function testIsEmpty(){
+    /**
+     * testIsEmpty tests isEmpty() function
+     *
+     * @access public
+     */
+    public function testIsEmpty()
+    {
         
     }
     
-    public function testPeek(){
+    /**
+     * testPeek tests peek() function
+     *
+     * @access public
+     */
+    public function testPeek()
+    {
         
     }
     
-    public function testPeekFirst(){
+    /**
+     * testPeekFirst tests peekFirst() function
+     *
+     * @access public
+     */
+    public function testPeekFirst()
+    {
         
     }
     
-    public function testPeekLast(){
+    /**
+     * testPeekLast tests peekLast() function
+     *
+     * @access public
+     */
+    public function testPeekLast()
+    {
     
     }
     
-    public function testPoll(){
+    /**
+     * testPoll tests poll() function
+     *
+     * @access public
+     */
+    public function testPoll()
+    {
         
     }
     
-    public function testPollFirst(){
+    /**
+     * testPollFirst tests pollFirst() function
+     *
+     * @access public
+     */
+    public function testPollFirst()
+    {
         
     }
     
-    public function testPop(){
+    /**
+     * testPop tests pop() function
+     *
+     * @access public
+     */
+    public function testPop()
+    {
         
     }
     
-    public function testPush(){
+    /**
+     * testPush tests push() function
+     *
+     * @access public
+     */
+    public function testPush()
+    {
         
     }
     
-    public function testRemove(){
+    /**
+     * testRemove tests remove() function
+     *
+     * @access public
+     */
+    public function testRemove()
+    {
         
     }
     
-    public function testRemoveAt(){
+    /**
+     * testRemoveAt tests removeAt() function
+     *
+     * @access public
+     */
+    public function testRemoveAt()
+    {
         
     }
     
-    public function testRemoveFirst(){
+    /**
+     * testRemoveFirst tests removeFirst() function
+     *
+     * @access public
+     */
+    public function testRemoveFirst()
+    {
         
     }
     
-    public function testRemoveLast(){
+    /**
+     * testRemoveLast tests remvoeLast() function
+     *
+     * @access public
+     */
+    public function testRemoveLast()
+    {
         
     }
     
-    public function testRemoveNode(){
+    /**
+     * testRemoveNode tests removeNode() function
+     *
+     * @access public
+     */
+    public function testRemoveNode()
+    {
         
     }
     
-    public function testSort(){
+    /**
+     * testSort tests sort() function
+     *
+     * @access public
+     */
+    public function testSort()
+    {
         
     }
 }
-
-
->>>>>>> a34a9782ddb88d8c99f3ccf2ce8fac2b5fa3b5ba
