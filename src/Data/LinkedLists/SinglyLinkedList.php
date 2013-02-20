@@ -1,13 +1,14 @@
 <?php
-
 /**
- * Namespace Identifier
- * @ignore
+ * This file is part of the Data package.
+ *
+ * For full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace Data\LinkedLists;
+
 /**
- * Require INode
- * @ignore
+ * Require SinglyLinkedNode
  */
 require_once __DIR__ . '/SinglyLinkedNode.php';
 /**
@@ -19,20 +20,20 @@ require_once __DIR__ . '/SinglyLinkedNode.php';
  * @version 1.0.0
  */
 
-class SinglyLinkedList implements \ILinkedList
+class SinglyLinkedList implements ILinkedList
 {
     /**
      * Private Mem Var to hold the current ISinglyLinkedNode object
      *
      * @access private
-     * @var ISinglyLinkedNode datatype to hold current node data
+     * @var SinglyLinkedNode datatype to hold current node data
      */
     private $_current;
     /**
      * Private Mem Var to hold the root node of the ISinglyLinkedNode
      *
      * @access private
-     * @var ISinglyLinkedNode datatype to hold root node data
+     * @var SinglyLinkedNode datatype to hold root node data
      */
     private $_root_node;
     
@@ -40,9 +41,9 @@ class SinglyLinkedList implements \ILinkedList
      * Construct SinglyLinkedList class
      *
      * @access public
-     * @param ISinglyLinkedList Root node for the linked list
+     * @param SinglyLinkedNode Root node for the linked list
      */
-    public function __construct(ISinglyLinkedNode $data = null)
+    public function __construct(SinglyLinkedNode $data = null)
     {
         
     }
@@ -155,7 +156,8 @@ class SinglyLinkedList implements \ILinkedList
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return array|null Returns an array with all the ISinglyLinkedNode instances whose value is equal to $value, otherwise returns null.
+     * @return array|null Returns an array with all the
+     * ISinglyLinkedNode instances whose value is equal to $value, otherwise returns null.
      */
     public function findAll($value)
     {
@@ -181,7 +183,8 @@ class SinglyLinkedList implements \ILinkedList
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return ISinglyLinkedNode|null Returns the last ISinglyLinkedNode that contains the value, otherwise null if none found.
+     * @return ISinglyLinkedNode|null Returns the last
+     * ISinglyLinkedNode that contains the value, otherwise null if none found.
      */
     public function findLast($value)
     {

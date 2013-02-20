@@ -1,0 +1,696 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>phpDocumentor » \Data\LinkedLists\DoublyLinkedList</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">phpDocumentor</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/Data.html"><i class="icon-th"></i> Data</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Data.html"><i class="icon-folder-open"></i> Data</a></li>
+<li><a href="../packages/McGowanCorp.html"><i class="icon-folder-open"></i> McGowanCorp</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">3</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Construct DoublyLinkedList class"><span class="description">Construct DoublyLinkedList class</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_add" title="add :: Adds a value onto the end of the list."><span class="description">Adds a value onto the end of the list.</span><pre>add()</pre></a></li>
+<li class="method public "><a href="#method_addNode" title="addNode :: Adds an IDoublyLinkedNode instance onto the end of the list."><span class="description">Adds an IDoublyLinkedNode instance onto the end of the list.</span><pre>addNode()</pre></a></li>
+<li class="method public "><a href="#method_asArray" title="asArray :: Returns the list as an associative array."><span class="description">Returns the list as an associative array.</span><pre>asArray()</pre></a></li>
+<li class="method public "><a href="#method_contains" title="contains :: Checks if the list contains a node with the specified value."><span class="description">Checks if the list contains a node with the specified value.</span><pre>contains()</pre></a></li>
+<li class="method public "><a href="#method_containsKey" title="containsKey :: Checks if the list contains a node with the specified key value."><span class="description">Checks if the list contains a node with the specified key value.</span><pre>containsKey()</pre></a></li>
+<li class="method public "><a href="#method_find" title="find :: Returns the IDoublyLinkedNode object by the specified value."><span class="description">Returns the IDoublyLinkedNode object by the specified value.</span><pre>find()</pre></a></li>
+<li class="method public "><a href="#method_findAll" title="findAll :: Returns an array of all IDoublyLinkedNodes found by the specified value."><span class="description">Returns an array of all IDoublyLinkedNodes found by the specified value.</span><pre>findAll()</pre></a></li>
+<li class="method public "><a href="#method_findFirst" title="findFirst :: Returns the first IDoublyLinkedNode instance found by with the specified value."><span class="description">Returns the first IDoublyLinkedNode instance found by with the specified value.</span><pre>findFirst()</pre></a></li>
+<li class="method public "><a href="#method_findLast" title="findLast :: Returns the last IDoublyLinkedNode instance found by the specified value."><span class="description">Returns the last IDoublyLinkedNode instance found by the specified value.</span><pre>findLast()</pre></a></li>
+<li class="method public "><a href="#method_get" title="get :: Returns the IDoublyLinkedNode at the specified $key."><span class="description">Returns the IDoublyLinkedNode at the specified $key.</span><pre>get()</pre></a></li>
+<li class="method public "><a href="#method_getFirst" title="getFirst :: Returns the first element in the list."><span class="description">Returns the first element in the list.</span><pre>getFirst()</pre></a></li>
+<li class="method public "><a href="#method_getLast" title="getLast :: Returns the last element in the list."><span class="description">Returns the last element in the list.</span><pre>getLast()</pre></a></li>
+<li class="method public "><a href="#method_insertAfter" title="insertAfter :: Inserts a new IDoublyLinkedNode after the specified key."><span class="description">Inserts a new IDoublyLinkedNode after the specified key.</span><pre>insertAfter()</pre></a></li>
+<li class="method public "><a href="#method_insertBefore" title="insertBefore :: Inserts a new IDoublyLinkedNode at before the specified key."><span class="description">Inserts a new IDoublyLinkedNode at before the specified key.</span><pre>insertBefore()</pre></a></li>
+<li class="method public "><a href="#method_isEmpty" title="isEmpty :: Returns a boolean to represent whether or not this list is empty."><span class="description">Returns a boolean to represent whether or not this list is empty.</span><pre>isEmpty()</pre></a></li>
+<li class="method public "><a href="#method_peek" title="peek :: Returns, but does not remove, the first node in the list."><span class="description">Returns, but does not remove, the first node in the list.</span><pre>peek()</pre></a></li>
+<li class="method public "><a href="#method_peekFirst" title="peekFirst :: Returns, but does not remove, the first node in the list."><span class="description">Returns, but does not remove, the first node in the list.</span><pre>peekFirst()</pre></a></li>
+<li class="method public "><a href="#method_peekLast" title="peekLast :: Returns, but does not remove, the last node in the list."><span class="description">Returns, but does not remove, the last node in the list.</span><pre>peekLast()</pre></a></li>
+<li class="method public "><a href="#method_poll" title="poll :: Returns and removes the first node in the list."><span class="description">Returns and removes the first node in the list.</span><pre>poll()</pre></a></li>
+<li class="method public "><a href="#method_pollFirst" title="pollFirst :: Returns and removes the first node in the list."><span class="description">Returns and removes the first node in the list.</span><pre>pollFirst()</pre></a></li>
+<li class="method public "><a href="#method_pollLast" title="pollLast :: Returns and removes the last node in the list."><span class="description">Returns and removes the last node in the list.</span><pre>pollLast()</pre></a></li>
+<li class="method public "><a href="#method_pop" title="pop :: Returns the last node's value and removes the last node in the list."><span class="description">Returns the last node's value and removes the last node in the list.</span><pre>pop()</pre></a></li>
+<li class="method public "><a href="#method_push" title="push :: Adds a new value onto the end of the list."><span class="description">Adds a new value onto the end of the list.</span><pre>push()</pre></a></li>
+<li class="method public "><a href="#method_remove" title="remove :: Removes all nodes whose value is equal to that specified."><span class="description">Removes all nodes whose value is equal to that specified.</span><pre>remove()</pre></a></li>
+<li class="method public "><a href="#method_removeAt" title="removeAt :: Removes the node that lives at the specified key."><span class="description">Removes the node that lives at the specified key.</span><pre>removeAt()</pre></a></li>
+<li class="method public "><a href="#method_removeFirst" title="removeFirst :: Removes the first node from the list."><span class="description">Removes the first node from the list.</span><pre>removeFirst()</pre></a></li>
+<li class="method public "><a href="#method_removeLast" title="removeLast :: Removes the last node from the list."><span class="description">Removes the last node from the list.</span><pre>removeLast()</pre></a></li>
+<li class="method public "><a href="#method_removeNode" title="removeNode :: Removes the specified node from the list."><span class="description">Removes the specified node from the list.</span><pre>removeNode()</pre></a></li>
+<li class="method public "><a href="#method_sort" title="sort :: Sorts the list by the node values."><span class="description">Sorts the list by the node values.</span><pre>sort()</pre></a></li>
+<li class="method public "><a href="#method_sortBy" title="sortBy :: Sorts the list by using a callback to specify the value to compare on."><span class="description">Sorts the list by using a callback to specify the value to compare on.</span><pre>sortBy()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul><li class="property private "><a href="#property__tail_node" title="$_tail_node :: Private Mem Var to hold the tail node"><span class="description"></span><pre>$_tail_node</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\Data\LinkedLists\DoublyLinkedList"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/Data.html">Data</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/Data.LinkedLists.html">LinkedLists</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/Data.LinkedLists.DoublyLinkedList.html">DoublyLinkedList</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">DoublyLinkedList class</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/Data.LinkedLists.html">Data\LinkedLists</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:j_mills44@fanshaweonline.ca">Jeremy Mills</a></td>
+</tr>
+<tr>
+<th>copyright</th>
+<td>(c) Jeremy Mills</td>
+</tr>
+<tr>
+<th>version</th>
+<td>1.0.0</td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Construct DoublyLinkedList class</h2>
+<pre>__construct(\Data\LinkedLists\DoublyLinkedNode $data) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$data</h4>
+<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><p>Root node for the linked list</p></div>
+</div></div>
+</div>
+<a id="method_add"></a><div class="element clickable method public method_add" data-toggle="collapse" data-target=".method_add .collapse">
+<h2>Adds a value onto the end of the list.</h2>
+<pre>add(mixed $value) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This method will create a new IDoublyLinkedNode instance assigning a
+numeric key value to the node and the value is assigned to the
+node's value property.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>The value to add.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>The key value of the node that was created and added.</div>
+</div></div>
+</div>
+<a id="method_addNode"></a><div class="element clickable method public method_addNode" data-toggle="collapse" data-target=".method_addNode .collapse">
+<h2>Adds an IDoublyLinkedNode instance onto the end of the list.</h2>
+<pre>addNode(\Data\LinkedLists\IDoublyLinkedNode $node) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The node that is to be added to the list should have its key reset so that
+it is the next key in the list's key sequence.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$node</h4>
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><p>The IDoublyLinkedNode to add.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The key value of the node that was added.</div>
+</div></div>
+</div>
+<a id="method_asArray"></a><div class="element clickable method public method_asArray" data-toggle="collapse" data-target=".method_asArray .collapse">
+<h2>Returns the list as an associative array.</h2>
+<pre>asArray() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The return array will be formatted so that each node within the list
+will be returned as a key => value representation.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An associative array of key and value pairs for all nodes.</div>
+</div></div>
+</div>
+<a id="method_contains"></a><div class="element clickable method public method_contains" data-toggle="collapse" data-target=".method_contains .collapse">
+<h2>Checks if the list contains a node with the specified value.</h2>
+<pre>contains(mixed $value) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to search for.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>Returns true if the $value was found, otherwise returns false.</div>
+</div></div>
+</div>
+<a id="method_containsKey"></a><div class="element clickable method public method_containsKey" data-toggle="collapse" data-target=".method_containsKey .collapse">
+<h2>Checks if the list contains a node with the specified key value.</h2>
+<pre>containsKey(mixed $key) : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>mixed</code><p>Contains the key value to search for.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>Returns true if the $key was found, otherwise returns false.</div>
+</div></div>
+</div>
+<a id="method_find"></a><div class="element clickable method public method_find" data-toggle="collapse" data-target=".method_find .collapse">
+<h2>Returns the IDoublyLinkedNode object by the specified value.</h2>
+<pre>find(mixed $value) : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to find.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first IDoublyLinkedNode that contains the value, otherwise null.</div>
+</div></div>
+</div>
+<a id="method_findAll"></a><div class="element clickable method public method_findAll" data-toggle="collapse" data-target=".method_findAll .collapse">
+<h2>Returns an array of all IDoublyLinkedNodes found by the specified value.</h2>
+<pre>findAll(mixed $value) : array | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to find.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code><code>null</code>Returns an array with all the
+IDoublyLinkedNode instances whose value is equal to $value, otherwise returns null.</div>
+</div></div>
+</div>
+<a id="method_findFirst"></a><div class="element clickable method public method_findFirst" data-toggle="collapse" data-target=".method_findFirst .collapse">
+<h2>Returns the first IDoublyLinkedNode instance found by with the specified value.</h2>
+<pre>findFirst(mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code>
+</div>
+</div></div>
+</div>
+<a id="method_findLast"></a><div class="element clickable method public method_findLast" data-toggle="collapse" data-target=".method_findLast .collapse">
+<h2>Returns the last IDoublyLinkedNode instance found by the specified value.</h2>
+<pre>findLast(mixed $value) : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The searching operations for this method are in reverse, therefore starting at the
+bottom of the list. This is done so on purpose to reduce unneeded overhead.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to find.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the last
+IDoublyLinkedNode that contains the value, otherwise null if none found.</div>
+</div></div>
+</div>
+<a id="method_get"></a><div class="element clickable method public method_get" data-toggle="collapse" data-target=".method_get .collapse">
+<h2>Returns the IDoublyLinkedNode at the specified $key.</h2>
+<pre>get(mixed $key) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>mixed</code><p>Contains the key of the IDoublyLinkedNode to get.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Returns the IDoublyLinkedNode at $key if found, otherwise null.</div>
+</div></div>
+</div>
+<a id="method_getFirst"></a><div class="element clickable method public method_getFirst" data-toggle="collapse" data-target=".method_getFirst .collapse">
+<h2>Returns the first element in the list.</h2>
+<pre>getFirst() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first IDoublyLinkedNode in the list, otherwise returns NULL.</div>
+</div></div>
+</div>
+<a id="method_getLast"></a><div class="element clickable method public method_getLast" data-toggle="collapse" data-target=".method_getLast .collapse">
+<h2>Returns the last element in the list.</h2>
+<pre>getLast() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the last IDoublyLinkedNode in the list, otherwise returns NULL.</div>
+</div></div>
+</div>
+<a id="method_insertAfter"></a><div class="element clickable method public method_insertAfter" data-toggle="collapse" data-target=".method_insertAfter .collapse">
+<h2>Inserts a new IDoublyLinkedNode after the specified key.</h2>
+<pre>insertAfter(int $after, mixed $value) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The IDoublyLinkedNode instance is created within this method. When inserting, all nodes that are
+to follow (come after) this node should be shifted and key values shifted as well.
+Additionally, when inserting a new IDoublyLinkedNode, the key will be automatically generated
+the next numeric value in the sequence of nodes.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$after</h4>
+<code>int</code><p>Contains the key value to insert a new IDoublyLinkedNode after.</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value used to create a new IDoublyLinkedNode with and inserted before $after.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>Returns the newly create IDoublyLinkedNode's key.</div>
+</div></div>
+</div>
+<a id="method_insertBefore"></a><div class="element clickable method public method_insertBefore" data-toggle="collapse" data-target=".method_insertBefore .collapse">
+<h2>Inserts a new IDoublyLinkedNode at before the specified key.</h2>
+<pre>insertBefore(int $before, mixed $value) : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The IDoublyLinkedNode instance is created within this method. When inserting, all nodes should
+be shifted and key values shifted as well for all nodes that follow this newly inserted.
+Additionally, when inserting a new IDoublyLinkedNode, the key will be automatically generated as the
+next numeric value in the sequence of nodes.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$before</h4>
+<code>int</code><p>Contains the key value to insert a new IDoublyLinkedNode before.</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value used to create a new IDoublyLinkedNode with and inserted before $before.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>int</code>Returns the newly create IDoublyLinkedNode's key.</div>
+</div></div>
+</div>
+<a id="method_isEmpty"></a><div class="element clickable method public method_isEmpty" data-toggle="collapse" data-target=".method_isEmpty .collapse">
+<h2>Returns a boolean to represent whether or not this list is empty.</h2>
+<pre>isEmpty() : bool</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>bool</code>Returns true if the list is empty, otherwise returns false.</div>
+</div></div>
+</div>
+<a id="method_peek"></a><div class="element clickable method public method_peek" data-toggle="collapse" data-target=".method_peek .collapse">
+<h2>Returns, but does not remove, the first node in the list.</h2>
+<pre>peek() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first node in the list. Will returns NULL if the list empty.</div>
+</div></div>
+</div>
+<a id="method_peekFirst"></a><div class="element clickable method public method_peekFirst" data-toggle="collapse" data-target=".method_peekFirst .collapse">
+<h2>Returns, but does not remove, the first node in the list.</h2>
+<pre>peekFirst() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first node in the list. Will returns NULL if the list empty.</div>
+</div></div>
+</div>
+<a id="method_peekLast"></a><div class="element clickable method public method_peekLast" data-toggle="collapse" data-target=".method_peekLast .collapse">
+<h2>Returns, but does not remove, the last node in the list.</h2>
+<pre>peekLast() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the last node in the list. Will returns NULL if the list empty.</div>
+</div></div>
+</div>
+<a id="method_poll"></a><div class="element clickable method public method_poll" data-toggle="collapse" data-target=".method_poll .collapse">
+<h2>Returns and removes the first node in the list.</h2>
+<pre>poll() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first node in the list. Will return NULL if the list is empty.</div>
+</div></div>
+</div>
+<a id="method_pollFirst"></a><div class="element clickable method public method_pollFirst" data-toggle="collapse" data-target=".method_pollFirst .collapse">
+<h2>Returns and removes the first node in the list.</h2>
+<pre>pollFirst() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first node in the list. Will return NULL if the list is empty.</div>
+</div></div>
+</div>
+<a id="method_pollLast"></a><div class="element clickable method public method_pollLast" data-toggle="collapse" data-target=".method_pollLast .collapse">
+<h2>Returns and removes the last node in the list.</h2>
+<pre>pollLast() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the last node in the list. Will return NULL if the list is empty.</div>
+</div></div>
+</div>
+<a id="method_pop"></a><div class="element clickable method public method_pop" data-toggle="collapse" data-target=".method_pop .collapse">
+<h2>Returns the last node's value and removes the last node in the list.</h2>
+<pre>pop() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>Returns the last node value in the list. Will return NULL if the list empty.</div>
+</div></div>
+</div>
+<a id="method_push"></a><div class="element clickable method public method_push" data-toggle="collapse" data-target=".method_push .collapse">
+<h2>Adds a new value onto the end of the list.</h2>
+<pre>push(mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A new IDoublyLinkedNode instance will be created and the value assigned to the specified. A numeric
+key will be created based on the sequence (last numeric key + 1) and assigned to this node.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to push onto the list.</p></div>
+</div></div>
+</div>
+<a id="method_remove"></a><div class="element clickable method public method_remove" data-toggle="collapse" data-target=".method_remove .collapse">
+<h2>Removes all nodes whose value is equal to that specified.</h2>
+<pre>remove(mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Will remove all nodes within the list in addition to shifting and adjusting their
+keys, for those that are within a numeric sequence.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>Contains the value to remove.</p></div>
+</div></div>
+</div>
+<a id="method_removeAt"></a><div class="element clickable method public method_removeAt" data-toggle="collapse" data-target=".method_removeAt .collapse">
+<h2>Removes the node that lives at the specified key.</h2>
+<pre>removeAt(mixed $key) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Will remove the node at $key within the list in addition to shifting and adjusting the keys for
+remaining nodes that follow the removed.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>mixed</code><p>Contains the value to remove.</p></div>
+</div></div>
+</div>
+<a id="method_removeFirst"></a><div class="element clickable method public method_removeFirst" data-toggle="collapse" data-target=".method_removeFirst .collapse">
+<h2>Removes the first node from the list.</h2>
+<pre>removeFirst() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_removeLast"></a><div class="element clickable method public method_removeLast" data-toggle="collapse" data-target=".method_removeLast .collapse">
+<h2>Removes the last node from the list.</h2>
+<pre>removeLast() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_removeNode"></a><div class="element clickable method public method_removeNode" data-toggle="collapse" data-target=".method_removeNode .collapse">
+<h2>Removes the specified node from the list.</h2>
+<pre>removeNode(\Data\LinkedLists\IDoublyLinkedNode $node) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If the node exists, it will be removed and all nodes that follow will be shifted and their keys
+will be adjusted.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$node</h4>
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><p>The node to remove from the list.</p></div>
+</div></div>
+</div>
+<a id="method_sort"></a><div class="element clickable method public method_sort" data-toggle="collapse" data-target=".method_sort .collapse">
+<h2>Sorts the list by the node values.</h2>
+<pre>sort() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The keys of all moved nodes will be adjusted so that the numeric key sequence
+remains (n - 1) + 1 for all nodes.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_sortBy"></a><div class="element clickable method public method_sortBy" data-toggle="collapse" data-target=".method_sortBy .collapse">
+<h2>Sorts the list by using a callback to specify the value to compare on.</h2>
+<pre>sortBy(\Data\LinkedLists\callable $predicate) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The callback should take one parameter of type IDoublyLinkedNode and return a single
+value that will be used for comparison.</p></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$predicate</h4>
+<code>callable</code><p>The specified callback.</p></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property__tail_node"> </a><div class="element clickable property private property__tail_node" data-toggle="collapse" data-target=".property__tail_node .collapse">
+<h2></h2>
+<pre>$_tail_node : <a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>private</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
+            generated on 2013-02-20T16:53:05-05:00.<br></footer></div>
+</div>
+</body>
+</html>
