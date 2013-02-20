@@ -2,9 +2,11 @@
 
 /**
  * Namespace Declaration
- * @ignore
+ * 
  */
 namespace Data\LinkedLists\Tests;
+
+require_once __DIR__ . '/../src/Data/LinkedLists/SinglyLinkedLists.php';
 
 class SinglyLinkedListTest extends PHPUnit_Framework_TestCase
 {
