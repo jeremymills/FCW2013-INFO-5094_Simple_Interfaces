@@ -1,4 +1,4 @@
-Copyright [2013] [Jeremy Mills <j_mills44@fanshaweonline.ca>]
+Copyright (c) 2013 Jeremy Mills
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
