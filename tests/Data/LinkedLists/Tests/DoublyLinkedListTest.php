@@ -8,6 +8,19 @@ namespace Data\LinkedLists\Tests;
 
 require_once __DIR__ . '/../src/Data/LinkedLists/DoublyLinkedLists.php';
 
+/**
+ * DoublyLInkedListTest Class extending PHPUnit_Framework_TestCase
+ *
+ * @package Data\LinkedLists\Tests
+ * 
+ * @author Alex Jones-Chick
+ * @author Jeremy Mills
+ * @author Jaide Haynes
+ * @author Carlie Hiel
+ * 
+ * @copyright 2013 INFO-5094 - Group A
+ * @version PHP 5.3
+ */
 class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -21,7 +34,7 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * testGetFirst tests getFirst function
+     * testGetFirst tests getFirst() function
      *
      * @access public
      */
