@@ -17,7 +17,7 @@ use Data\ILinkedNode;
  * @package Data\LinkedLists
  * @version 1.0.0
  */
-interface ILinkedList extends \Countable, \IteratorAggregate, 
+interface ILinkedList extends \Countable, \IteratorAggregate
 {
     /**
      * Returns the first element in the list.

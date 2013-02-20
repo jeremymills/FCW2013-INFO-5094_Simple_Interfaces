@@ -1,13 +1,14 @@
 <?php
-
 /**
- * Namespace Identifier
- * @ignore
+ * This file is part of the Data package.
+ *
+ * For full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace Data\LinkedLists;
+
 /**
- * Require INode
- * @ignore
+ * Require DoublyLinkedNode
  */
 require_once __DIR__ . '/DoublyLinkedNode.php';
 /**
@@ -19,13 +20,13 @@ require_once __DIR__ . '/DoublyLinkedNode.php';
  * @version 1.0.0
  */
 
-class DoublyLinkedList implements \IDoublyLinkedList
+class DoublyLinkedList implements IDoublyLinkedList
 {
     /**
      * Private Mem Var to hold the tail node
      *
      * @access private
-     * @var IDoublyLinkedList holds the tail node of list
+     * @var DoublyLinkedNode holds the tail node of list
      */
     private $_tail_node;
     
@@ -33,7 +34,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * Construct DoublyLinkedList class
      *
      * @access public
-     * @param IDoublyLinkedList Root node for the linked list
+     * @param DoublyLinkedNode Root node for the linked list
      */
     public function __construct(DoublyLinkedNode $data = null)
     {
@@ -148,7 +149,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return array|null Returns an array with all the IDoublyLinkedNode instances whose value is equal to $value, otherwise returns null.
+     * @return array|null Returns an array with all the
+     * IDoublyLinkedNode instances whose value is equal to $value, otherwise returns null.
      */
     public function findAll($value)
     {
@@ -174,7 +176,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      *
      * @access public
      * @param mixed $value Contains the value to find.
-     * @return IDoublyLinkedNode|null Returns the last IDoublyLinkedNode that contains the value, otherwise null if none found.
+     * @return IDoublyLinkedNode|null Returns the last
+     * IDoublyLinkedNode that contains the value, otherwise null if none found.
      */
     public function findLast($value)
     {
