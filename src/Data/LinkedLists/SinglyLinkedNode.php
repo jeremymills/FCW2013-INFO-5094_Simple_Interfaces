@@ -1,10 +1,12 @@
 <?php
-
 /**
- * Namespace declaration
- * @ignore
+ * This file is part of the Data package.
+ *
+ * For full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 namespace Data\LinkedLists;
+
 /**
  * SinglyLinkedNode Class
  *
@@ -13,7 +15,7 @@ namespace Data\LinkedLists;
  * @copyright (c) Jeremy Mills
  * @version 1.0.0
  */
-class SinglyLinkedNode implements \ILinkedNode
+class SinglyLinkedNode implements \Data\ILinkedNode
 {
     /**
      * Private Mem Var to hold the $data object
@@ -44,10 +46,10 @@ class SinglyLinkedNode implements \ILinkedNode
      * @access public
      * @param SinglyLinkedNode The node to be created
      */
-    public function __construct(ILinkedNode $data)
+    public function __construct(SinglyLinkedNode $data)
     {
         if (null === $data) {
-           throw new \InvalidArgumentException('Datatype must not be null'); 
+            throw new \InvalidArgumentException('Datatype must not be null');
         }
         $this->_data = $data;
     }
