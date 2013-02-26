@@ -18,19 +18,19 @@ namespace Data\LinkedLists;
 class DoublyLinkedNode implements \Data\IDoublyLinkedNode
 {
     /**
-     * Private Mem Var to hold the IDoublyLinkedNode
+     * Private Mem Var to hold the current value of the IDoublyLinkedNode instance
      *
      * @access private
-     * @var mixed datatype to hold node data
+     * @var mixed value to hold value location
      */
     private $_data;
     /**
      * Private Mem Var to hold the current key IDoublyLinkedNode value
      *
      * @access private
-     * @var mixed key to hold data location
+     * @var double key to hold key location
      */
-    private $_key = '';
+    private $_key;
     /**
      * Private Mem Var to hold the next IDoublyLinkedNode instance
      *
@@ -53,12 +53,33 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The node to be created
      */
-    public function __construct(IDoublyLinkedNode $data)
+    public function __construct(IDoublyLinkedNode $data, IDoublyLinkedNode $prev = null, IDoublyLinkedNode $next = null)
     {
-        if (null === $data) {
-            throw new \InvalidArgumentException('Datatype must not be null');
+        $this->_next = null;
+        $this->_previous = null;
+        if ($data === null) {
+            throw new \InvalidArgumentException('Data object must not be null.');
         }
         $this->_data = $data;
+        
+        if (isset($prev)) {
+            if (!($prev instanceof IDoublyLinkedNode)) {
+                throw new \InvalidArgumentException(
+                    'Object nodes must be class instance of IDoublyLinkedNode.'
+                );
+            }
+            $this->_previous = $prev;
+        }
+        if (isset($next)) {
+            if (!($next instanceof IDoublyLinkedNode)) {
+                throw new \InvalidArgumentException(
+                    'Object nodes must be class instance of IDoublyLinkedNode.'
+                );
+            }
+            $this->_next = $next;
+        }
+        
+        $this->_key =  isset($this->_previous) ? $this->_previous->getKey() + 1 : 0;
     }
     
     /**
@@ -81,7 +102,12 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      */
     public function setPrevious(IDoublyLinkedNode &$previous)
     {
-        $this->_previous = &$previous;
+        if (isset($this->_previous)) {
+            $this->_previous->setPrevious($this->_previous);
+            $this->_previous->getPrevious()->setNext($previous);
+        }
+        $this->_previous = $previous;
+        $previous->_next = $this;
     }
     
     /**
@@ -96,7 +122,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
     }
     
     /**
-     * Sets the next ILinkedNode instance.
+     * Sets the next IDoublyLinkedNode instance.
      *
      * The `next` IDoublyLinkedNode should be the IDoublyLinkedNode instance that comes after
      * this instance within a List.
@@ -104,9 +130,14 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The IDoublyLinkedNode instance that is next.
      */
-    public function setNext(IDoublyLinkedNode $next)
+    public function setNext(IDoublyLinkedNode &$next)
     {
+        if (isset($this->_next)) {
+            $this->_next->setNext($this->_next);
+            $this->_next->getNext()->setPrevious($next);
+        }
         $this->_next = $next;
+        $next->_previous = $this;
     }
     
     /**
@@ -128,6 +159,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      */
     public function setKey($key)
     {
+        
         $this->_key = $key;
     }
     
@@ -146,7 +178,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * Sets the value for this node.
      *
      * @access public
-     * @param mixed The value.
+     * @param mixed value to assign to node.
      */
     public function setValue($value)
     {

@@ -28,9 +28,9 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * Private Mem Var to hold the $data object
      *
      * @access private
-     * @var mixed key to hold data location
+     * @var double key to hold data location
      */
-    private $_key = '';
+    private $_key;
     /**
      * Private Mem Var to hold the $data object
      *
