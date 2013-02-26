@@ -53,30 +53,16 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The node to be created
      */
-    public function __construct(IDoublyLinkedNode $data, IDoublyLinkedNode $prev = null, IDoublyLinkedNode $next = null)
+    public function __construct($data = null, $prev = null, $next = null)
     {
-        $this->_next = null;
-        $this->_previous = null;
-        if ($data === null) {
-            throw new \InvalidArgumentException('Data object must not be null.');
+        if (null !== $data) {
+            $this->setValue($data);
         }
-        $this->_data = $data;
-        
-        if (isset($prev)) {
-            if (!($prev instanceof IDoublyLinkedNode)) {
-                throw new \InvalidArgumentException(
-                    'Object nodes must be class instance of IDoublyLinkedNode.'
-                );
-            }
-            $this->_previous = $prev;
+        if (null !== $prev) {
+            $this->setPrevious($prev);
         }
-        if (isset($next)) {
-            if (!($next instanceof IDoublyLinkedNode)) {
-                throw new \InvalidArgumentException(
-                    'Object nodes must be class instance of IDoublyLinkedNode.'
-                );
-            }
-            $this->_next = $next;
+        if (null !== $next) {
+            $this->setNext($next);
         }
         
         $this->_key =  isset($this->_previous) ? $this->_previous->getKey() + 1 : 0;

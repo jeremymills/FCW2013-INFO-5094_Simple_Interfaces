@@ -23,7 +23,7 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access private
      * @var mixed datatype to hold node data
      */
-    private $_data;
+    private $_value;
     /**
      * Private Mem Var to hold the $data object
      *
@@ -46,12 +46,14 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access public
      * @param SinglyLinkedNode The node to be created
      */
-    public function __construct(SinglyLinkedNode $data)
+    public function __construct($value = null, $next = null)
     {
-        if (null === $data) {
-            throw new \InvalidArgumentException('Datatype must not be null');
+        if (null !== $value) {
+            $this->setValue($value);
         }
-        $this->_data = $data;
+        if (null !== $next) {
+            $this->setNext($next);
+        }
     }
     
     /**

@@ -622,7 +622,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function sort()
     {
-        $link = $this->_firstNode;
+        /*$link = $this->_firstNode;
         while ($link->getNext() !== null) {
             $next = $link->getNext();
             
@@ -637,6 +637,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
             }
             $link = $link->getNext();
         }
+        */
+        $this->sortBy(array($this, 'sortAscending'));
     }
     
     /**
@@ -650,7 +652,22 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function sortBy(callable $predicate)
     {
-        //WTF!?
+        
+    }
+    
+    /**
+     * Sort Ascending Function to sort given list with ascending property
+     *
+     * @access public
+     * @return double will return 0 | 1 | -1 depending on the given ascending order
+     */
+    public function sortAscending(SinglyLinkedNode $lhs, SinglyLinkedNode $rhs)
+    {
+        if ($lhs->getValue() === $rhs->getValue()) {
+            return 0;
+        }
+        
+        return $lhs->getValue() < $rhs->getValue() ? -1 : 1;
     }
     
     /**
