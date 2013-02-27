@@ -20,22 +20,35 @@ require_once __DIR__ . '/SinglyLinkedNode.php';
  * @version 1.0.0
  */
 
-class SinglyLinkedList implements ILinkedList
+class SinglyLinkedList implements \ILinkedList
 {
     /**
-     * Private Mem Var to hold the current ISinglyLinkedNode object
+     * Private Mem Var to hold the current value of the ISinglyLinkedNode instance
      *
      * @access private
-     * @var SinglyLinkedNode datatype to hold current node data
+     * @var mixed value to hold value location
      */
-    private $_current;
+    private $_data;
     /**
-     * Private Mem Var to hold the root node of the ISinglyLinkedNode
+     * Private Mem Var to hold the current size of list
+     *
+     * @access private
+     * @var double hold current node size
+     */
+    private $_size;
+    /**
+     * Private Mem Var to hold the root node of the List
      *
      * @access private
      * @var SinglyLinkedNode datatype to hold root node data
      */
     private $_root_node;
+    /**
+     * Private mem Var to hold the last node of the List
+     * @access private
+     * @var SinglyLinkedNode datatype to hold last node data
+     */
+    private $_last_node;
     
     /**
      * Construct SinglyLinkedList class
@@ -43,9 +56,12 @@ class SinglyLinkedList implements ILinkedList
      * @access public
      * @param SinglyLinkedNode Root node for the linked list
      */
-    public function __construct(SinglyLinkedNode $data = null)
+    public function __construct(SinglyLinkedNode $data, SinglyLinkedNode $first = null, SinglyLinkedNode $last = null)
     {
-        
+        $this->_data = $data;
+        $this->_size = 0;
+        $this->_root_node = $first;
+        $this->_last_node = $last;
     }
     
     /**
@@ -137,6 +153,17 @@ class SinglyLinkedList implements ILinkedList
     public function contains($value)
     {
         
+    }
+    
+    /**
+     * returns the size of the linked List
+     *
+     * @access public
+     * @return double size of the linked list
+     */
+    public function count()
+    {
+        return $this->_size;
     }
     
     /**
@@ -427,6 +454,15 @@ class SinglyLinkedList implements ILinkedList
      */
     public function sortBy(callable $predicate)
     {
+        
+    }
+    
+    /**
+     * ToString function to preview the sorted linked list in String format
+     *
+     * @access public
+     */
+    public function __toString() {
         
     }
 }
