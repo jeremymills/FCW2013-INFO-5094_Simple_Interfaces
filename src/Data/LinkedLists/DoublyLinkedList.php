@@ -622,22 +622,6 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function sort()
     {
-        /*$link = $this->_firstNode;
-        while ($link->getNext() !== null) {
-            $next = $link->getNext();
-            
-            if ($next->getValue() > $link->getValue()) {
-                $link->setPrevious($next);
-                $next->setNext($link);
-                $next->setPrevious($link->getPrevious());
-                $link->setNext($next->getNext());
-                
-                $next->setKey($next->getPrevious()->getKey() + 1);
-                $link->setKey($next->getKey() + 1);
-            }
-            $link = $link->getNext();
-        }
-        */
         $this->sortBy(array($this, 'sortAscending'));
     }
     
@@ -652,7 +636,31 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function sortBy(callable $predicate)
     {
-        
+        $lhs = $this->getFirst();
+        while ($lhs !== NULL && NULL !== ($rhs = $lhs->getNext())) {
+            $compare = $predicate($lhs, $rhs);
+            if (1 <= $compare) {
+                //The following node is greater than the predicate node, switch them
+                
+                //set rhs new previous to lhs previous (null | node)
+                $rhs->setPrevious($lhs->getPrevious());
+                //set lhs new previous to rhs
+                $lhs->setPrevious($rhs);
+                //set lhs new next to rhs old next
+                $lhs->setNext($rhs->getNext());
+                //set rhs new key to lhs key
+                $rhs->setKey($lhs->getKey());
+                //set rhs new key to rhs new key + 1
+                $lhs->setKey($rhs->getKey() + 1);
+                //set rhs new next to lhs
+                $rhs->setNext($lhs);
+                
+            }
+            else if (-1 >= $compare) {
+                //won't need to do anything they are already sorted
+            }
+            $lhs = $rhs;
+        }
     }
     
     /**
