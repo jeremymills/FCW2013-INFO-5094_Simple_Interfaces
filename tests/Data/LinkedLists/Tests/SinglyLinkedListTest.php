@@ -58,7 +58,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
         $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        $this->assertEquals($node, $test->getLast());
+        $this->assertEquals($next, $test->getLast());
     }
     
     /**

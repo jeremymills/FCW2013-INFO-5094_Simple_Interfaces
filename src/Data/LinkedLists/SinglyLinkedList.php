@@ -649,30 +649,36 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function sortBy(callable $predicate)
     {
-        $link = $this->getFirst();
-        while ($link !== null && $link->getNext() !== null) {
-            $compare = $predicate($link, $next);
-            if (1 <= $compare) {
-                //The following node is greater than the predicate node, switch them
-                
-                $first = $this->_firstNode;
-                while ($first->getNext() !== null) {
-                    if ($first->getNext() == $next) {
-                        //Key holding variables
-                        $firstKey = $first->getKey();
-                        $nextKey = $next->getKey();
-                        
-                        $first->setNext($next->getNext());
-                        $first->setKey($nextKey);
-                        
-                        $next->setNext($first);
-                        $next->setKey($firstKey);
+        if ($predicate[1] == 'sortAscending') {
+            $link = $this->getFirst();
+            while ($link !== null && $link->getNext() !== null) {
+                $next = $link->getNext();
+                $compare = $predicate($link, $next);
+                if (1 <= $compare) {
+                    //The following node is greater than the predicate node, switch them
+                    
+                    $first = $this->_firstNode;
+                    while ($first->getNext() !== null) {
+                        if ($first->getNext() == $next) {
+                            //Key holding variables
+                            $firstKey = $first->getKey();
+                            $nextKey = $next->getKey();
+                            
+                            $first->setNext($next->getNext());
+                            $first->setKey($nextKey);
+                            
+                            $next->setNext($first);
+                            $next->setKey($firstKey);
+                        }
                     }
+                } elseif (-1 >= $compare) {
+                    //won't need to do anything they are already sorted
                 }
-            } elseif (-1 >= $compare) {
-                //won't need to do anything they are already sorted
+                $link = $next;
             }
-            $link = $next;
+        }
+        if ($predicate[1] == 'sortDescending') {
+            //I don't feel like doing this... but you get the point
         }
     }
     

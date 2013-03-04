@@ -78,10 +78,12 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access public
      * @param ILinkedNode The ILinkedNode instance that is next.
      */
-    public function setNext(\Data\ILinkedNode $next)
+    public function setNext(\Data\ILinkedNode $next = null)
     {
         $this->_next = $next;
-        $this->_next->setKey($this->getKey() + 1);
+        if (null !== $next) {
+            $this->_next->setKey($this->getKey() + 1);
+        }
     }
     
     /**
