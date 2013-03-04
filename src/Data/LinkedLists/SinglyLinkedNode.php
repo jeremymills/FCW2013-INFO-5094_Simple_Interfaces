@@ -77,7 +77,7 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access public
      * @param ILinkedNode The ILinkedNode instance that is next.
      */
-    public function setNext(ILinkedNode $next)
+    public function setNext(\Data\ILinkedNode $next)
     {
         $this->_next = $next;
     }

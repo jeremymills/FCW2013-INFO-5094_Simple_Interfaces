@@ -8,10 +8,6 @@
 namespace Data\LinkedLists;
 
 /**
- * Require SinglyLinkedNode
- */
-require_once __DIR__ . '/SinglyLinkedNode.php';
-/**
  * SinglyLinkedList class
  *
  * @package Data\LinkedLists
@@ -20,7 +16,7 @@ require_once __DIR__ . '/SinglyLinkedNode.php';
  * @version 1.0.0
  */
 
-class SinglyLinkedList implements \ILinkedList
+class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
 {
     /**
      * Private Mem Var to hold the current value of the ISinglyLinkedNode instance
@@ -132,7 +128,7 @@ class SinglyLinkedList implements \ILinkedList
      * @param ISinglyLinkedNode $node The ISinglyLinkedNode to add.
      * @return mixed The key value of the node that was added.
      */
-    public function addNode(ISinglyLinkedNode $node)
+    public function addNode(\Data\ILinkedNode $node)
     {
         $node->setKey($this->_lastNode->getKey() + 1);
         $this->_lastNode->setNext($node);
@@ -610,7 +606,7 @@ class SinglyLinkedList implements \ILinkedList
      * @access public
      * @param ISinglyLinkedNode $node The node to remove from the list.
      */
-    public function removeNode(ISinglyLinkedNode $node)
+    public function removeNode(\Data\ILinkedNode $node)
     {
         $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
@@ -713,5 +709,15 @@ class SinglyLinkedList implements \ILinkedList
         foreach ($array as $k => $v) {
             return "Key: $k => Value: $v \n";
         }
+    }
+    
+    /**
+     * getIterator function to be implemented
+     *
+     * @access public
+     */
+    public function getIterator()
+    {
+        //return new \Data\Iterator($this);
     }
 }

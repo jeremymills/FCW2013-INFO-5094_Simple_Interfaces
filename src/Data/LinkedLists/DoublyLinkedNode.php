@@ -6,6 +6,7 @@
  * file that was distributed with this source code.
  */
 namespace Data\LinkedLists;
+require_once __DIR__ . '/../IDoublyLinkedNode.php';
 
 /**
  * DoublyLinkedNode Class
@@ -86,7 +87,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The previously linked node.
      */
-    public function setPrevious(IDoublyLinkedNode &$previous)
+    public function setPrevious(\Data\IDoublyLinkedNode &$previous)
     {
         if (isset($this->_previous)) {
             $this->_previous->setPrevious($this->_previous);
@@ -116,7 +117,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The IDoublyLinkedNode instance that is next.
      */
-    public function setNext(IDoublyLinkedNode &$next)
+    public function setNext(\Data\IDoublyLinkedNode &$next)
     {
         if (isset($this->_next)) {
             $this->_next->setNext($this->_next);
