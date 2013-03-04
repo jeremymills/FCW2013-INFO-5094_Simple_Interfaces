@@ -29,9 +29,16 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
+<<<<<<< HEAD
         $node = new \Data\LinkedLists\SinglyLinkedNode(array(10,2,3));        
         $list = new \Data\LinkedLists\SinglyLinkedList($node);
         $this->assertEquals(false, $list->isEmpty());
+=======
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals(false, $test->isEmpty());
+>>>>>>> a4552274a4ef6343a091e636951a5601dc982bda
     }
     
     /**
@@ -41,8 +48,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFirst()
     {
-        //$test = new LinkedLists\SinglyLinkedList(15,2,8);
-        //$this->assertEquals(2, $test->getFirst());
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals($node, $test->getFirst());
     }
     
     /**
@@ -52,8 +61,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetLast()
     {
-        //$test = new LinkedLists\SinglyLinkedList(15,2,8);
-        //$this->assertEquals(2, $test->getFirst());
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals($next, $test->getLast());
     }
     
     /**
