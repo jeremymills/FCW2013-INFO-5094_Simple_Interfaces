@@ -29,9 +29,9 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        $node = new \Data\LinkedLists\SinglyLinkedNode();
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        $this->assertEquals(false, $test->isEmpty());
+        $node = new \Data\LinkedLists\SinglyLinkedNode(array(10,2,3));        
+        $list = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals(false, $list->isEmpty());
     }
     
     /**
