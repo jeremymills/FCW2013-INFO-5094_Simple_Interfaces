@@ -400,7 +400,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function isEmpty()
     {
-        return isset($this->_firstNode) ? false : true;
+        return !isset($this->_firstNode);
     }
     
     /**
