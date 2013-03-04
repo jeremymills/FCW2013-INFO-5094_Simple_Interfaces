@@ -6,17 +6,18 @@
  */
 namespace Data\LinkedLists\Tests;
 
-require_once __DIR__ . '/../src/Data/LinkedLists/SinglyLinkedLists.php';
+//require_once __DIR__ . '/../../../../src/Data/LinkedLists/SinglyLinkedLists.php';
+require_once 'bootstrap.php';
+
 
 /**
  * SinglyLInkedListTest Class extending PHPUnit_Framework_TestCase
  *
  * @package Data\LinkedLists\Tests
  * 
- * @author Alex Jones-Chick
  * @author Jeremy Mills
- * @author Jaide Haynes
  * @author Carlie Hiel
+ * @author Shane Ducharme
  * 
  * @copyright 2013 INFO-5094 - Group A
  * @version PHP 5.3
@@ -30,7 +31,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        
+        $test = new LinkedLists\SinglyLinkedLists(15,2,8);
+        $this->assertEquals(false, $test->isEmpty());
     }
     
     /**
@@ -40,7 +42,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFirst()
     {
-        
+        $test = new LinkedLists\SinglyLinkedLists(15,2,8);
+        $this->assertEquals(2, $test->getFirst());
     }
     
     /**
@@ -50,7 +53,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetLast()
     {
-        
+        $test = new LinkedLists\SinglyLinkedLists(15,2,8);
+        $this->assertEquals(2, $test->getFirst());
     }
     
     /**
