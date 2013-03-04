@@ -378,7 +378,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function isEmpty()
     {
-        return isset($this->_firstNode);
+        return isset($this->_firstNode) ? false : true;
     }
     
     /**
