@@ -6,7 +6,7 @@
  * file that was distributed with this source code.
  */
 namespace Data;
-require_once __DIR__ . '/ILinkedNode.php';
+
 /**
  * The IDoublyLinkedNode interface is implemented by doubly linked nodes.
  *

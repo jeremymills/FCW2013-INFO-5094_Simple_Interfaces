@@ -72,7 +72,7 @@ class SinglyLinkedNode implements \Data\ILinkedNode
     /**
      * Sets the next ILinkedNode instance.
      *
-     * The `next` ILinkedNode should be the ILinkedNode instance that comes after
+     * The 'next' ILinkedNode should be the ILinkedNode instance that comes after
      * this instance within a List.
      *
      * @access public
@@ -82,7 +82,9 @@ class SinglyLinkedNode implements \Data\ILinkedNode
     {
         $this->_next = $next;
         if (null !== $next) {
-            $this->_next->setKey($this->getKey() + 1);
+            if (!($next->getKey())) {
+                $this->_next->setKey($this->getKey() + 1);
+            }
         }
     }
     
