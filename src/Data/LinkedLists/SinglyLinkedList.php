@@ -58,7 +58,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
             throw new \InvalidArgumentException('Data node must not be null.');
         }
         $this->_data = $data;
-        $this->_size = 0;
+        $this->_size = $this->count();
         $this->_firstNode = $this->getFirst();
         $this->_lastNode = $this->getLast();
     }
@@ -166,7 +166,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function containsKey($key)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == $key) {
                 return true;
@@ -188,7 +188,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function contains($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return true;
@@ -209,6 +209,11 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function count()
     {
+        $link = $this->_firstNode;
+        while ($link !== null) {
+            ++$this->_size;
+            $link = $link->getNext();
+        }
         return $this->_size;
     }
     
@@ -221,7 +226,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function find($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return $link;

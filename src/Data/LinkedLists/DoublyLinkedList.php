@@ -8,10 +8,6 @@
 namespace Data\LinkedLists;
 
 /**
- * Require DoublyLinkedNode
- */
-require_once __DIR__ . '/DoublyLinkedNode.php';
-/**
  * DoublyLinkedList class
  *
  * @package Data\LinkedLists

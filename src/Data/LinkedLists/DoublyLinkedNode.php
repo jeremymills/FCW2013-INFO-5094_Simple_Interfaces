@@ -6,7 +6,6 @@
  * file that was distributed with this source code.
  */
 namespace Data\LinkedLists;
-require_once __DIR__ . '/../IDoublyLinkedNode.php';
 
 /**
  * DoublyLinkedNode Class
