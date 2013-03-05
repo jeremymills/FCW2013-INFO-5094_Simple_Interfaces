@@ -30,6 +30,12 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cheese');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('ham', $nodeA);
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('bread', $nodeB);
+        
+        $test = new \Data\LinkedLists\DoublyLinkedList($nodeC);
+        
         
     }
     
