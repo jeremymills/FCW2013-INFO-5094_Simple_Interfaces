@@ -73,6 +73,9 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function getFirst()
     {
         $link = isset($this->_data) ? $this->_data : null;
+        if (isset($this->_firstNode)) {
+            return $link;
+        }
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == 0) {
                 return $link;
