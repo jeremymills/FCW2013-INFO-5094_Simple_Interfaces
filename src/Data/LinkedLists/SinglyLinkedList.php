@@ -258,11 +258,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     {
         $return = array();
         $link = $this->getFirst();
-<<<<<<< HEAD
-        while ($link !== null && $link->getNext() !== null) {
-=======
         while ($link !== null) {
->>>>>>> 390530337bda395dddf7f01463653f35823b1aa3
             if ($link->getValue() == $value) {
                 $return[$link->getKey()] = $link;
             }
