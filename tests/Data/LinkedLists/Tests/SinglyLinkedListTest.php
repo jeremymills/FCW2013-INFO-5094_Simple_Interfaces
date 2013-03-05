@@ -221,7 +221,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $test = new \Data\LinkedLists\SinglyLinkedList($nodeD);
         
-        //$this->assertEquals($nodeA, $test->findFirst('pizza'));
+        $this->assertEquals($nodeA, $test->findLast('pizza'));
     }
     
     /**
@@ -249,10 +249,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $before = new \Data\LinkedLists\SinglyLinkedNode('muffin');
+        //$before = new \Data\LinkedLists\SinglyLinkedNode('muffin');
         //$test->insertBefore(0, $before);
         
-       // $this->assertEquals(0, $test->insertBefore(0, $before));
+        $this->assertEquals(0, $test->insertBefore(0, 'muffin'));
         
         
     }
@@ -264,7 +264,16 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInsertAfter()
     {
+        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
+        //$before = new \Data\LinkedLists\SinglyLinkedNode('muffin');
+        //$test->insertBefore(0, $before);
+        
+        $this->assertEquals(2, $test->insertAfter(1, 'muffin'));
+        
+        $this->assertEquals(3, $test->insertAfter(2, 'cookie'));
     }
     
     /**
@@ -386,11 +395,12 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $nodeB = new \Data\LinkedLists\SinglyLinkedNode('peanut', $nodeA);
         $test = new \Data\LinkedLists\SinglyLinkedList($nodeB);
         
-        $nodeC = new \Data\LinkedLists\SinglyLinkedNode('jam');
+        //$nodeC = new \Data\LinkedLists\SinglyLinkedNode('jam');
         
-        $test->push($nodeC);
+        $test->push('jam');
+        $this->assertEquals('jam', $test->getLast()->getValue());
         
-        //$this->assertEquals();
+        //$this->assertEquals(4, $test->count());
     }
     
     /**
@@ -400,6 +410,15 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemove()
     {
+        $nodeA = new \Data\LinkedLists\SinglyLinkedNode('trek');
+        $nodeB = new \Data\LinkedLists\SinglyLinkedNode('star', $nodeA);
+        $test = new \Data\LinkedLists\SinglyLinkedList($nodeB);
+        
+        $this->assertEquals(2, $test->count());
+        
+        $test->remove('star');
+        
+        //$this->assertEquals(1, $test->count());
         
     }
     

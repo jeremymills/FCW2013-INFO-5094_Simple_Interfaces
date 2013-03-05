@@ -539,6 +539,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         $link = $this->_firstNode;
         while ($link !== null) {
             if ($link->getValue() == $value) {
+                --$this->_size;
                 $removed = $link;
                 while ($removed->getNext() !== null) {
                     $removed->getNext()->setKey($removed->getNext()->getKey() - 1);
