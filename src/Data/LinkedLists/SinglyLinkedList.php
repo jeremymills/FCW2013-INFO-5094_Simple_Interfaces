@@ -250,7 +250,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function findAll($value)
     {
         $return = array();
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 $return[$link->getKey()] = $link;
@@ -271,7 +271,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function findFirst($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return $link;
@@ -320,7 +320,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function get($key)
     {
-        $list = $this->_firstNode;
+        $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == $key) {
                 return $link;
@@ -447,7 +447,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * Returns and removes the first node in the list.
      *
      * @access public
-     * @return ISinglyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
+     * @return ISinglyLinkedNode|null Ret   urns the first node in the list. Will return NULL if the list is empty.
      */
     public function poll()
     {
