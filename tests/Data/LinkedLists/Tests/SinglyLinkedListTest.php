@@ -184,7 +184,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $node = new \Data\LinkedLists\SinglyLinkedNode('banana', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals($next, $test->findAll('apple'));
+        $this->assertEquals(array(1 => $next), $test->findAll('apple'));
         
     }
     
@@ -353,7 +353,13 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemove()
     {
+        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
+        $this->assertEquals(2, $test->count());
+        $test->remove('cake');
+        $this->assertEquals(1, $test->count());
     }
     
     /**
@@ -407,43 +413,32 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     {
         $next = new \Data\LinkedLists\SinglyLinkedNode('juice');
         $node = new \Data\LinkedLists\SinglyLinkedNode('apple', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $dome = new \Data\LinkedLists\SinglyLinkedNode('sauce', $node);
+        $test = new \Data\LinkedLists\SinglyLinkedList($dome);
         
-        //$this->assertEquals($node, $test->getFirst());
+        $this->assertEquals($dome, $test->getFirst());
         
         $test->removeNode($node);
         
-        //$this->assertEquals($next, $test->getFirst());   
+        $this->assertEquals($dome, $test->getFirst());
+        $this->assertEquals(1, $next->getKey());
     }
     
     /**
-     * testSort tests sort() function
+     * testSortBy tests sortBy() and sort() functions
      *
-     * @access public
-     */
-    public function testSort()
-    {
-        
-    }
-    
-    /**
-     * testSortBy tests sortBy() function
+     * As well as testing the sortAscending function used as the callable $predicate
      *
      * @access public
      */
     public function testSortBy()
     {
+        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-    }
-    
-    /**
-     * testSortAscending tests sortAscending() function
-     *
-     * @access public
-     */
-    public function testSortAscending()
-    {
-        
+        $test->sort();
+        $this->assertEquals($next, $test->getFirst());
     }
     
     /**

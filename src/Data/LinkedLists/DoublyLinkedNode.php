@@ -65,7 +65,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
             $this->setNext($next);
         }
         
-        $this->_key =  isset($this->_previous) ? $this->_previous->getKey() + 1 : 0;
+        $this->_key = isset($this->_previous) ? $this->_previous->getKey() + 1 : 0;
     }
     
     /**
