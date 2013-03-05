@@ -272,7 +272,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function findFirst($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return $link;
@@ -329,7 +329,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function get($key)
     {
-        $list = $this->_firstNode;
+        $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == $key) {
                 return $link;
