@@ -460,7 +460,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $test->removeFirst();
         
-        //$this->assertEquals($next, $test->getFirst());
+        //$this->assertEquals('cake', $test->getFirst()->getValue());
     }
     
     /**
@@ -476,7 +476,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $test->removeLast();
         
-       // $this->assertEquals($node, $test->getLast());
+        //$this->assertEquals('cup', $test->getLast()->getValue());
     }
     
     /**
@@ -500,24 +500,6 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-     * testSortBy tests sortBy() and sort() functions
-     *
-     * @access public
-     */
-    public function testSort()
-    {
-        $nodeA = new \Data\LinkedLists\SinglyLinkedNode(2);
-        $nodeB = new \Data\LinkedLists\SinglyLinkedNode(6, $nodeA);
-        $nodeC = new \Data\LinkedLists\SinglyLinkedNode(3, $nodeB);
-        
-        $test = new \Data\LinkedLists\SinglyLinkedList($nodeC);
-        
-        //$test->sort();
-        
-        //$this->assertEquals(2, $test->getFirst->getValue);
-    }
-    
-    /**
      * testSortBy tests sortBy() function
      * As well as testing the sortAscending function used as the callable $predicate
      *
@@ -525,14 +507,14 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testSortBy()
     {
-	/*
+	
         $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
         $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
         $test->sort();
         $this->assertEquals($next, $test->getFirst());
-	*/
+	
     }
     
     /**
