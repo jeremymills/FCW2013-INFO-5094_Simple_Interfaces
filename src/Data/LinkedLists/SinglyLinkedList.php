@@ -72,14 +72,14 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function getFirst()
     {
-        $link = $this->_data;
+        $link = isset($this->_data) ? $this->_data : null;
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == 0) {
                 return $link;
             }
             $link = $link->getNext();
         }
-        return null;
+        return $link;
     }
     
     /**
@@ -150,7 +150,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     {
         $array = array();
         $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             $array[$link->getKey()] = $link->getValue();
             $link = $link->getNext();
         }
@@ -166,7 +166,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function containsKey($key)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == $key) {
                 return true;
@@ -188,7 +188,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function contains($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return true;
@@ -221,7 +221,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function find($value)
     {
-        $list = $this->getFirst();
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
                 return $link;
