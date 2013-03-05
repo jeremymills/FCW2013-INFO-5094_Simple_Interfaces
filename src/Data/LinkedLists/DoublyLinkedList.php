@@ -54,7 +54,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
             throw new \InvalidArgumentException('Data node must not be null');
         }
         $this->_data = $data;
-        $this->_size = 0;
+        $this->_size = $this->count();
         $this->_firstNode = $this->getFirst();
         $this->_lastNode = $this->getLast();
         
@@ -143,8 +143,9 @@ class DoublyLinkedList implements \IDoublyLinkedList
     {
         $array = array();
         $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             $array[$link->getKey()] = $link->getValue();
+            
             $link = $link->getNext();
         }
         return $array;
@@ -159,7 +160,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function containsKey($key)
     {
-        $list = $this->_firstNode;
+        $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == $key) {
                 return true;
@@ -196,7 +197,13 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function count()
     {
-        return $this->_size;
+        $num = 0;
+        $link = $this->_firstNode;
+        while ($link !== null) {
+            ++$num;
+            $link = $link->getNext();
+        }
+        return $num;
     }
     
     /**
@@ -318,6 +325,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $link = $this->_firstNode;
         while ($link->getNext() !== null) {
             if ($link->getKey() == $before) {
+                ++$this->_size;
                 $new = new DoublyLinkedNode($value, $link->getPrevious, $link);
                 $new->setKey($before);
                 $link->setPrevious($new);
@@ -350,6 +358,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $link = $this->_firstNode;
         while ($link->getNext() !== null) {
             if ($link->getKey() == $after) {
+                ++$this->_size;
                 $new = new DoublyLinkedNode($value, $link, $link->getNext());
                 $new->setKey($link->getKey() + 1);
                 $new->setPrevious($link);
@@ -434,6 +443,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function pollFirst()
     {
+        ++$this->_size;
         $link = $this->_firstNode;
         $newFirst = $this->_firstNode->getNext();
         $newFirst->setPrevious(null);
@@ -449,6 +459,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function pollLast()
     {
+        --$this->_size;
         $link = $this->_lastNode;
         $newLast = $this->_lastNode->getPrevious();
         $newLast->setNext(null);
@@ -463,6 +474,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function pop()
     {
+        --$this->_size;
         $link = $this->_lastNode;
         $newLast = $this->_lastNode->getPrevious();
         $newLast->setNext(null);
@@ -484,6 +496,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $new->setPrevious($this->_lastNode);
         $this->_lastNode->setNext($new);
         $new->setKey($this->_lastNode->getKey() + 1);
+        ++$this->_size;
     }
     
     /**
@@ -500,6 +513,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $link = $this->_firstNode;
         while ($link !== null) {
             if ($link->getValue() == $value) {
+                --$this->_size;
                 if (null !== $link->getPrevious()) {
                     $prev = $link->getPrevious();
                     $prev->setNext($link->getNext());
@@ -528,6 +542,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $link = $this->_firstNode;
         while ($link !== null) {
             if ($link->getKey() == $key) {
+                --$this->_size;
                 if (null !== $link->getPrevious()) {
                     $prev = $link->getPrevious();
                     $prev->setNext($link->getNext());
@@ -553,6 +568,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     public function removeFirst()
     {
         if (isset($this->_firstNode)) {
+            --$this->_size;
             $next = $this->_firstNode->getNext();
             $next->setPrevious(null);
             $next->setKey(0);
@@ -567,6 +583,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
     public function removeLast()
     {
         if (isset($this->_lastNode)) {
+            --$this->_size;
             $prev = $this->_lastNode->getPrevious();
             $prev->setNext(null);
         }
@@ -586,6 +603,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
         $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
             if ($link == $node) {
+                --$this->_size;
                 if (null !== $link->getPrevious()) {
                     $link->getPrevious()->setNext($link->getNext());
                 }

@@ -145,7 +145,6 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      */
     public function setKey($key)
     {
-        
         $this->_key = $key;
     }
     
