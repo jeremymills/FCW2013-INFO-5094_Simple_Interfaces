@@ -295,8 +295,9 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * @return ISinglyLinkedNode|null Returns the last
      * ISinglyLinkedNode that contains the value, otherwise null if none found.
      */
-    public function findLast($value)
+    public function findLast($value)// WORK ON THIS!!!
     {
+        $key = null;
         $link = $this->_lastNode;
         if ($link->getValue() == $value) {
             return $link;
@@ -304,6 +305,13 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         $link = $this->_firstNode;
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getValue() == $value) {
+                $key = $link->getKey();
+            }
+            $link = $link->getNext();
+        }
+        $link = $this->_firstNode;
+        while ($link !== null && $key !== null) {
+            if ($link->getKey() == $key) {
                 return $link;
             }
             $link = $link->getNext();
@@ -348,14 +356,15 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function insertBefore($before, $value)
     {
+        $new = new \Data\LinkedLists\SinglyLinkedNode($value);
+        
         $link = $this->_firstNode;
         while ($link !== null) {
             if ($link->getKey() == $before) {
-                $new = new SinglyLinkedNode($value, $link);
                 $new->setKey($before);
                 $new->setNext($link);
-                while ($link !== null && $link->getKey() !== $before) {
-                    $link->setKey($before + 1);
+                while ($link !== null && $link->getNext() !== null) {
+                    $link->setKey($link->getNext()->getKey() + 1);
                     $link = $link->getNext();
                 }
             }
