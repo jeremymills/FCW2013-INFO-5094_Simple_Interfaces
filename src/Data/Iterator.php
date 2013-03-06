@@ -2,8 +2,6 @@
 
 namespace Data;
 
-require_once __DIR__ . 'IIterator.php';
-
 /**
  *Iterator
  *
@@ -22,6 +20,14 @@ class Iterator implements \IIterator
      */
 	private $_array = array();
 
+    /**
+     *the mode variable
+     *
+     *@access private
+     *@var int
+     */
+    private $_mode;
+
 	/**
      *variable to keep track of position or key of the array
      *
@@ -38,6 +44,45 @@ class Iterator implements \IIterator
      */
 	public function __construct($ArrayObject, \Data\IteratorMode $mode=null)
     {
+        if ($mode !== null) 
+        {
+            if ($mode !== 1 || $mode !== 2 || $mode !== 4 || $mode !== 8) 
+            {
+                    throw new \InvalidArgumentException('Please enter a valid mode ');
+            }
+            if ($mode == 4) 
+            {
+                $this->_mode = function($a,$b) 
+                {
+                    return ($a->getKey() < $b->getKey());
+                }
+            }
+
+            if ($mode == 8)
+            {
+                $this->_mode = function($a,$b)
+                {
+                    return ($a->getKey() > $b->getKey());
+                }
+            }
+            if ($mode == 2)
+            {
+                $this->_mode = function($a,$b)
+                {
+
+                }
+            }
+            if ($mode == 1)
+            {
+                $this->_mode = function($a, $b)
+                {
+                    
+                }
+            }
+
+        }
+
+        $this->mode = $mode;
         $this->setMode[$mode]; 
 
     	$this->_array = $ArrayObject;
@@ -107,7 +152,9 @@ class Iterator implements \IIterator
      */
     public function setMode($mode)
     {
-        $this->mode = $mode;
+        $this->mode = Data\IteratorMode $mode;
+
+        ++++
     }
     
     /**
@@ -118,7 +165,7 @@ class Iterator implements \IIterator
      */
     public function getMode()
     {
-
+        return $this->mode;
     }
 
 }
