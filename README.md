@@ -42,7 +42,7 @@ DoublyLinkedListTest
 * **Bio:** [student]
 
 ## License
-http://www.apache.org/licenses/LICENSE-2.0.html
+http://www.gnu.org/licenses/gpl.html
 
 ## Examples
 --Will be added when we understand this
