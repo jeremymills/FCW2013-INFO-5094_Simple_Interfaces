@@ -125,6 +125,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
         $this->assertEquals(true, $test->containsKey(1));
+        $this->assertEquals(false, $test->containsKey(2));
     }
     
     /**
@@ -231,7 +232,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $node = new \Data\LinkedLists\SinglyLinkedNode('ice', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals($test->get(1)->getValue(), $next->getValue());
+        $this->assertEquals($next->getValue(), $test->get(1)->getValue());
     }
     
     /**
@@ -508,12 +509,12 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testSortBy()
     {
 	
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
+        $next = new \Data\LinkedLists\SinglyLinkedNode('cup');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('cake', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
         $test->sort();
-        $this->assertEquals($next, $test->getFirst());
+        $this->assertEquals($node, $test->getFirst());
 	
     }
     
