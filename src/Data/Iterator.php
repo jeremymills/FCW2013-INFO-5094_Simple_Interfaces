@@ -153,8 +153,6 @@ class Iterator implements \IIterator
     public function setMode($mode)
     {
         $this->mode = Data\IteratorMode $mode;
-
-        ++++
     }
     
     /**
