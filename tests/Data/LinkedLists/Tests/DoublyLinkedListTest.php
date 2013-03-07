@@ -474,7 +474,22 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testPush()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('sandwiches');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('ice');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cream', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $this->assertEquals(3, $test->count());
+        
+        $test->push('are');
+        $this->assertEquals('are', $test->getLast()->getValue());
+        
+        $test->push('yummy');
+        $this->assertEquals('yummy', $test->getLast()->getValue());
+        
+        $this->assertEquals(5, $test->count());
     }
     
     /**
@@ -484,7 +499,18 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemove()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('them all');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('one ring');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('to rule', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $this->assertEquals(3, $this->count());
+        $test->remove('them all');
+        $this->assertEquals(2, $test->count());
+        $test->remove('to rule');
+        $this->assertEquals(1, $test->count());
     }
     
     /**
@@ -494,7 +520,17 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveAt()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('ice');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cream', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $this->assertEquals('sandwich', $test->getLast()->getValue());
+        
+        $test->removeAt(2);
+        $this->assertEquals('cream', $test->getLast()->getValue());
     }
     
     /**
@@ -504,7 +540,15 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveFirst()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cool');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('muffins');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('are', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $test->removeFirst();
+        $this->assertEquals('are', $test->getFirst()->getValue());
     }
     
     /**
@@ -514,7 +558,15 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveLast()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cool');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('muffins');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('are', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $test->removeLast();
+        $this->assertEquals('are', $test->getLast()->getValue());
     }
     
     /**
@@ -524,16 +576,53 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveNode()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('ice');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cream', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
+        $this->assetEquals(3, $test->count());
+        $test->removeNode($nodeA);
+        $this->assertEquals(2, $test->count());
     }
     
     /**
-     * testSort tests sort() function
+     * testSort tests sort(), sortBy() and sortAcsending() functions
      *
      * @access public
      */
     public function testSort()
     {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('2');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('3');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('1', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
+        
+        $this->assertEquals($nodeB, $test->getFirst());
+        $this->assertEquals(3, $test->getFirst()->getValue());
+        
+        $test->sort();
+        $this->assertEquals($nodeC, $test->getFirst());
+        $this->assertEquals(1, $test->getFirst()->getValue());
+    }
+    
+    /**
+     * testToString tests __toString() function
+     *
+     * @access public
+     */
+    public function testToString()
+    {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('bottom');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('top');
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('middle', $nodeB, $nodeA);
+                
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
         
     }
 }
