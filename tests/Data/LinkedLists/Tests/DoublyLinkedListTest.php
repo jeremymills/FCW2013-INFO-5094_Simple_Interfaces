@@ -6,17 +6,14 @@
  */
 namespace Data\LinkedLists\Tests;
 
+use Data\LinkedLists;
+
 // require_once __DIR__ . '/../src/Data/LinkedLists/DoublyLinkedLists.php';
 
 /**
  * DoublyLInkedListTest Class extending PHPUnit_Framework_TestCase
  *
  * @package Data\LinkedLists\Tests
- * 
- * @author Alex Jones-Chick
- * @author Jeremy Mills
- * @author Jaide Haynes
- * @author Carlie Hiel
  * 
  * @copyright 2013 INFO-5094 - Group A
  * @version PHP 5.3
@@ -30,6 +27,19 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
+        //practice testing!!
+        
+        $list = new \Data\LinkedLists\DoublyLinkedList();
+        $next2 = new \Data\LinkedLists\DoublyLinkedNode('lala');
+        $next = new \Data\LinkedLists\DoublyLinkedNode('land', null, $next2);
+        $node = new \Data\LinkedLists\DoublyLinkedNode('lala', null, $next);
+        
+        $list->addNode($node);
+        //print $list;
+        //$this->assertEquals(3, $list->count());
+        //print_r ($list->asArray());
+        //$list->sort();
+        //print_r ($list->asArray());
         
     }
     

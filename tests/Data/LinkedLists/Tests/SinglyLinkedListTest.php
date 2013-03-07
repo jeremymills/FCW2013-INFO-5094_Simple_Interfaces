@@ -8,14 +8,11 @@ namespace Data\LinkedLists\Tests;
 
 use Data\LinkedLists;
 
+
 /**
- * SinglyLInkedListTest Class extending PHPUnit_Framework_TestCase
+ * DoublyLInkedListTest Class extending PHPUnit_Framework_TestCase
  *
  * @package Data\LinkedLists\Tests
- * 
- * @author Jeremy Mills
- * @author Carlie Hiel
- * @author Shane Ducharme
  * 
  * @copyright 2013 INFO-5094 - Group A
  * @version PHP 5.3
@@ -29,10 +26,21 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        $this->assertEquals(false, $test->isEmpty());
+        //practice testing!!
+        
+        $list = new \Data\LinkedLists\SinglyLinkedList();
+        $next2 = new \Data\LinkedLists\SinglyLinkedNode('lala');
+        $next = new \Data\LinkedLists\SinglyLinkedNode('land', $next2);
+        $node = new \Data\LinkedLists\SinglyLinkedNode('lala', $next);
+        
+        $list->addNode($node);
+        //print $list;
+        $this->assertEquals(false, $list->isEmpty());
+        print_r ($list->asArray());
+        //$this->assertEquals($node, $list->find('lala'));
+        //print_r ($list->findAll('lala'));
+        
+        //print_r ($list->asArray());
     }
     
     /**
@@ -42,10 +50,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFirst()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        $this->assertEquals($node, $test->getFirst());
+        
     }
     
     /**
@@ -55,10 +60,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetLast()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        $this->assertEquals($next, $test->getLast());
+    
     }
     
     /**
@@ -67,13 +69,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
     public function testAdd()
-    {   
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo');
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+    {
         
-        $this->assertEquals(0, $node->getKey());
-        $this->assertEquals(1, $test->add('pineapples'));
-        $this->assertEquals('pineapples', $node->getNext()->getValue());
     }
     
     /**
@@ -83,15 +80,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddNode()
     {
-        $nodeA = new \Data\LinkedLists\SinglyLinkedNode('fool');
-        $test = new \Data\LinkedLists\SinglyLinkedList($nodeA);
-        
-        $nodeB = new \Data\LinkedLists\SinglyLinkedNode('pool');
-        $this->assertEquals(1, $test->addNode($nodeB));
-        
-        $nodeC = new \Data\LinkedLists\SinglyLinkedNode('cool');
-        $this->assertEquals(2, $test->addNode($nodeC));
-        $this->assertEquals('cool', $nodeB->getNext()->getValue());
+    
     }
     
     /**
@@ -101,16 +90,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testAsArray()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('scott');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('great', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals(false, is_array($test));
-        
-        $array = $test->asArray($test);
-        $this->assertEquals('great', $array[0]);
-        $this->assertEquals('scott', $array[1]);
-        $this->assertEquals(true, is_array($array));
     }
     
     /**
@@ -120,11 +100,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testContainsKey()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals(true, $test->containsKey(1));
     }
     
     /**
@@ -134,25 +110,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testContains()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
-        $this->assertEquals(true, $test->contains('cake'));
-    }
     
-    /**
-     * testCount tests count() function
-     *
-     * @access public
-     */
-    public function testCount()
-    {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
-        $this->assertEquals(2, $test->count());
     }
     
     /**
@@ -162,14 +120,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testFind()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('apple');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('banana', $next);
         
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
-        $this->assertEquals($next, $test->find('apple'));
-        $this->assertEquals($node, $test->find('banana'));
-        $this->assertEquals(null, $test->find('orange'));
     }
     
     /**
@@ -179,11 +130,6 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindAll()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('apple');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('banana', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
-        $this->assertEquals(array(1 => $next), $test->findAll('apple'));
         
     }
     
@@ -194,7 +140,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testFindFirst()
     {
-        
+    
     }
     
     /**
@@ -214,11 +160,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGet()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals($test->get(1)->getValue(), $next->getValue());
     }
     
     /**
@@ -228,10 +170,6 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInsertBefore()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
         
     }
     
@@ -242,7 +180,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInsertAfter()
     {
-        
+    
     }
     
     /**
@@ -252,11 +190,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsEmpty()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        //$this->assertEquals(false, $test->isEmpty());
     }
     
     /**
@@ -286,7 +220,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testPeekLast()
     {
-        
+    
     }
     
     /**
@@ -305,16 +239,6 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
     public function testPollFirst()
-    {
-        
-    }
-    
-    /**
-     * testPollLast tests pollLast() function
-     *
-     * @access public
-     */
-    public function testPollLast()
     {
         
     }
@@ -346,13 +270,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemove()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $this->assertEquals(2, $test->count());
-        $test->remove('cake');
-        $this->assertEquals(1, $test->count());
     }
     
     /**
@@ -372,29 +290,17 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveFirst()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $test->removeFirst();
-        
-        //$this->assertEquals($next, $test->getFirst());
     }
     
     /**
-     * testRemoveLast tests removeLast() function
+     * testRemoveLast tests remvoeLast() function
      *
      * @access public
      */
     public function testRemoveLast()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
         
-        $test->removeLast();
-        
-       // $this->assertEquals($node, $test->getLast());
     }
     
     /**
@@ -404,54 +310,16 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveNode()
     {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('juice');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('apple', $next);
-        $dome = new \Data\LinkedLists\SinglyLinkedNode('sauce', $node);
-        $test = new \Data\LinkedLists\SinglyLinkedList($dome);
-        
-        $this->assertEquals($dome, $test->getFirst());
-        
-        $test->removeNode($node);
-        
-        $this->assertEquals($dome, $test->getFirst());
-        $this->assertEquals(1, $next->getKey());
-    }
-    
-    /**
-     * testSortBy tests sortBy() and sort() functions
-     *
-     * As well as testing the sortAscending function used as the callable $predicate
-     *
-     * @access public
-     */
-    public function testSortBy()
-    {
-        $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
-        $test = new \Data\LinkedLists\SinglyLinkedList($node);
-        
-        $test->sort();
-        $this->assertEquals($next, $test->getFirst());
-    }
-    
-    /**
-     * testToString tests __toString() function
-     *
-     * @access public
-     */
-    public function testToString()
-    {
         
     }
     
     /**
-     * testGetIterator tests getIterator() function
+     * testSort tests sort() function
      *
      * @access public
      */
-    public function testGetIterator()
+    public function testSort()
     {
         
     }
-    
 }

@@ -31,7 +31,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * @access private
      * @var double hold current node size
      */
-    private $_size;
+    private $_size = 0;
     /**
      * Private Mem Var to hold the root node of the List
      *
@@ -50,17 +50,9 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * Construct SinglyLinkedList class
      *
      * @access public
-     * @param SinglyLinkedNode Root node for the linked list
      */
-    public function __construct(SinglyLinkedNode $data)
+    public function __construct()
     {
-        if (null === $data) {
-            throw new \InvalidArgumentException('Data node must not be null.');
-        }
-        $this->_data = $data;
-        $this->_size = $this->count();
-        $this->_firstNode = $this->getFirst();
-        $this->_lastNode = $this->getLast();
     }
     
     /**
@@ -72,17 +64,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function getFirst()
     {
-        if (isset($this->_firstNode)) {
-            return $this->_firstNode;
-        }
-        $link = isset($this->_data) ? $this->_data : null;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getKey() == 0) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        return $link;
+        return isset($this->_firstNode) ? $this->_firstNode : null;
     }
     
     /**
@@ -93,11 +75,12 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function getLast()
     {
-        $link = isset($this->_data) ? $this->_data : null;
-        while ($link !== null && $link->getNext() !== null) {
-            $link = $link->getNext();
+        $last = $this->_lastNode;
+        while ($last->getNext() !== null) {
+            $last = $last->getNext();
         }
-        return $link;
+        $this->_lastNode = $last;
+        return isset($this->_lastNode) ? $this->_lastNode : null;
     }
     
     /**
@@ -113,12 +96,8 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function add($value)
     {
-        $new = new SinglyLinkedNode($value);
-        $this->_lastNode->setNext($new);
-        $new->setKey($this->_lastNode->getKey() + 1);
-        $this->_lastNode = $new;
-        ++$this->_size;
-        return $new->getKey();
+        $new = new \Data\LinkedLists\SinglyLinkedNode($value);
+        $this->addNode($new);
     }
     
     /**
@@ -133,11 +112,20 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function addNode(\Data\ILinkedNode $node)
     {
-        $node->setKey($this->_lastNode->getKey() + 1);
-        $this->_lastNode->setNext($node);
-        $this->_lastNode = $node;
+        $node->setKey($this->_size);
+        
+        if (null === $this->_firstNode) {
+            $this->_firstNode = $node;
+            $next = $node->getNext();
+            $this->_size = isset($next) ? ++$this->_size : $this->_size;
+            $this->_lastNode = isset($next) ? $next : $node;
+        } else {
+            $this->_lastNode->setNext($node);
+            $this->_lastNode = $node;
+        }
+        $this->resetKeys($this->getFirst());
+        
         ++$this->_size;
-        return $node->getKey();
     }
     
     /**
@@ -170,14 +158,11 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function containsKey($key)
     {
         $link = $this->getFirst();
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             if ($link->getKey() == $key) {
                 return true;
             }
             $link = $link->getNext();
-        }
-        if ($link->getKey() == $key) {
-            return true;
         }
         return false;
     }
@@ -192,14 +177,11 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function contains($value)
     {
         $link = $this->getFirst();
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             if ($link->getValue() == $value) {
                 return true;
             }
             $link = $link->getNext();
-        }
-        if ($link->getValue() == $value) {
-            return true;
         }
         return false;
     }
@@ -212,13 +194,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function count()
     {
-        $num = 0;
-        $link = $this->_firstNode;
-        while ($link !== null) {
-            ++$num;
-            $link = $link->getNext();
-        }
-        return $num;
+        return $this->_size;
     }
     
     /**
@@ -230,17 +206,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function find($value)
     {
-        $link = $this->getFirst();
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getValue() == $value) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        if ($link->getValue() == $value) {
-            return $link;
-        }
-        return null;
+        return $this->findFirst($value);
     }
     
     /**
@@ -261,7 +227,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
             }
             $link = $link->getNext();
         }
-        return !empty($return) ? $return : null;
+        return isset($return) ? $return : null;
     }
     
     /**
@@ -273,14 +239,11 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function findFirst($value)
     {
         $link = $this->getFirst();
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             if ($link->getValue() == $value) {
                 return $link;
             }
             $link = $link->getNext();
-        }
-        if ($link->getValue() == $value) {
-            return $link;
         }
         return null;
     }
@@ -298,26 +261,19 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function findLast($value)
     {
-        $key = null;
+        $return = null;
         $link = $this->_lastNode;
         if ($link->getValue() == $value) {
             return $link;
         }
         $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             if ($link->getValue() == $value) {
-                $key = $link->getKey();
+                $return = $link;
             }
             $link = $link->getNext();
         }
-        $link = $this->_firstNode;
-        while ($link !== null && $key !== null) {
-            if ($link->getKey() == $key) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        return null;
+        return $return;
     }
     
     /**
@@ -330,14 +286,11 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function get($key)
     {
         $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        while ($link !== null) {
             if ($link->getKey() == $key) {
                 return $link;
             }
             $link = $link->getNext();
-        }
-        if ($link->getKey() == $key) {
-            return $link;
         }
         return null;
     }
@@ -357,22 +310,26 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function insertBefore($before, $value)
     {
-        $new = new \Data\LinkedLists\SinglyLinkedNode($value);
+        if ($before == 0) {
+            throw new \InvalidArgumentException('You can not throw a new key before the first in sequence');
+        }
         
         $link = $this->_firstNode;
-        while ($link !== null) {
-            if ($link->getKey() == $before) {
+        while ($link !== null && $link->getNext() !== null) {
+            if ($link->getNext()->getKey() == $before) {
                 ++$this->_size;
-                $new->setKey($before);
-                $new->setNext($link);
-                while ($link !== null && $link->getNext() !== null) {
-                    $link->setKey($link->getNext()->getKey() + 1);
-                    $link = $link->getNext();
-                }
+                $new = new \Data\LinkedLists\SinglyLinkedNode($value);
+                $new->setNext($link->getNext());
+                $link->setNext($new);
+                $new->setKey($link->getKey() + 1);
+                
+                $list = $new;
+                $this->resetKeys($this->_firstNode);
+                return $new->getKey();
             }
             $link = $link->getNext();
         }
-        return $new->getKey();
+        return new \InvalidArgumentException('Key does not exist');
     }
     
     /**
@@ -390,23 +347,22 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function insertAfter($after, $value)
     {
+        $new = new \Data\LinkedLists\SinglyLinkedNode($value);
+        
         $link = $this->_firstNode;
         while ($link !== null) {
             if ($link->getKey() == $after) {
                 ++$this->_size;
-                $new = new SinglyLinkedNode($value, $link->getNext());
-                $new->setKey($link->getKey() + 1);
+                $new->setNext($link->getNext());
                 $link->setNext($new);
-                $newLoop = $new;
-                while ($newLoop->getNext() !== null) {
-                    $link = $newLoop->getNext();
-                    $link->setKey($link->getKey() + 1);
-                    $newLoop = $link;
-                }
+                
+                $this->resetKeys($this->getFirst());
+                
+                return $new->getKey();
             }
             $link = $link->getNext();
         }
-        return $new->getKey();
+        return new \InvalidArgumentException('Please enter a valid key value');
     }
     
     /**
@@ -474,12 +430,14 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function pollFirst()
     {
-        --$this->_size;
         $link = $this->_firstNode;
-        $newFirst = $this->_firstNode->getNext();
-        $this->_firstNode->setNext(null);
-        $newFirst->setKey(0);
-        $this->_firstNode = $newFirst;
+        if (null !== $link) {
+            $newFirst = $this->_firstNode->getNext();
+            $this->_firstNode->setNext(null);
+            $newFirst->setKey(0);
+            $this->_firstNode = $newFirst;
+            --$this->_size;
+        }
         return $link;
     }
     
@@ -491,14 +449,17 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function pollLast()
     {
-        --$this->_size;
         $link = $this->_lastNode;
-        $newLast = $this->_firstNode;
-        while ($newLast !== null) {
-            if ($newLast->getNext() === $link) {
-                $newLast->setNext(null);
+        if (null !== $link) {
+            $newLast = $this->_firstNode;
+            while ($newLast !== null && $newLast->getNext() !== null) {
+                if ($newLast->getNext() == $link) {
+                    $newLast->setNext(null);
+                }
+                $newLast = $newLast->getNext();
             }
-            $newLast = $newLast->getNext();
+            $this->_lastNode = $newLast;
+            --$this->_size;
         }
         return $link;
     }
@@ -542,27 +503,19 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function remove($value)
     {
-        $link = $this->_firstNode;
-        while ($link !== null) {
-            if ($link->getValue() == $value) {
-                $removed = $link;
-                $first = $this->_firstNode;
-                while ($first !== null) {
-                    if ($first->getNext() == $removed) {
-                        $first->setNext($removed->getNext());
-                    }
-                    if ($first == $removed) {
-                        $this->_firstNode = $removed->getNext();
-                    }
-                    $first = $first->getNext();
-                }
-                while ($removed->getNext() !== null) {
-                    $removed->getNext()->setKey($removed->getNext()->getKey() - 1);
-                    $removed = $removed->getNext();
-                }
+        $link = $this->getFirst();
+        if ($link->getValue() == $value) {
+            $this->_firstNode = null;
+        }
+        while ($link->getNext() !== null) {
+            if ($link->getNext()->getValue() == $value) {
+                $temp = $link->getNext();
+                $link->getNext()->setNext(null);
+                $link->setNext($temp);
             }
             $link = $link->getNext();
         }
+        $this->resetKeys($this->getFirst());
     }
     
      /**
@@ -580,14 +533,13 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         while ($link !== null) {
             if ($link->getKey() == $key) {
                 --$this->_size;
-                $removed = $link;
-                while ($removed->getNext() !== null) {
-                    $removed->getNext()->setKey($removed->getNext()->getKey() - 1);
-                    $removed = $removed->getNext();
-                }
+                $next = $link->getNext();
+                
+                $link->setNext(null);
             }
-            $link = $link->getNext();
+            $link = $next;
         }
+        $this->resetKeys($this->getFirst());
     }
     
     /**
@@ -600,12 +552,10 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         if (isset($this->_firstNode)) {
             --$this->_size;
             $link = $this->_firstNode;
-            while ($link->getNext() !== null) {
-                $link->getNext()->setKey($link->getNext()->getKey() - 1);
-                $link = $link->getNext();
-            }
+            $newFirst = $link->getNext();
+            $this->resetKeys($newFirst);
             $this->_firstNode->setNext(null);
-            $this->_firstNode = $this->getFirst();
+            $this->_firstNode = $newFirst;
         }
     }
     
@@ -626,6 +576,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
                 $link = $link->getNext();
             }
             $this->_lastNode->setNext(null);
+            $this->_lastNode = null;
             $this->_lastNode = $this->getLast();
         }
     }
@@ -641,35 +592,21 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function removeNode(\Data\ILinkedNode $node)
     {
-        $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        $link = $this->getFirst();
+        
+        while ($link !== null) {
             if ($link == $node) {
                 --$this->_size;
-                if ($link == $this->_firstNode) {
-                    $link->getNext()->setKey($link->getKey());
-                    $this->_firstNode = $link->getNext();
-                    $link->setNext(null);
-                } else {
-                    //node to remove is not first in list
-                    $first = $this->_firstNode;
-                    while ($first !== null) {
-                        if ($first->getNext() == $link) {
-                            $first->setNext($link->getNext());
-                            $first->getNext()->setKey($link->getKey());
-                            $link->setNext(null);
-                            $first = $first->getNext();
-                            while ($first->getNext() !== null) {
-                                $first->getNext()->setKey($first->getNext()->getKey() - 1);
-                                $first = $first->getNext();
-                            }
-                        }
-                        
-                        $first = $first->getNext();
-                    }
-                }
+                $link->setNext(null);
+            }
+            if ($link->getNext() !== null && $link->getNext() == $node) {
+                --$this->_size;
+                $link->setNext($link->getNext()->getNext());
+                $link->getNext()->setNext(null);
             }
             $link = $link->getNext();
         }
+        $this->resetKeys($this->getFirst());
     }
     
     /**
@@ -696,38 +633,21 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function sortBy(callable $predicate)
     {
-        if ($predicate[1] == 'sortAscending') {
-            $link = $this->getFirst();
-            while ($link !== null && $link->getNext() !== null) {
-                $next = $link->getNext();
-                $compare = $predicate($link, $next);
-                if (1 <= $compare) {
-                    //The following node is greater than the predicate node, switch them
-                    
-                    $first = $link;
-                    while ($first->getNext() !== null) {
-                        if ($first->getNext() == $next) {
-                            //Key holding variables
-                            $firstKey = $first->getKey();
-                            $nextKey = $next->getKey();
-                            
-                            $first->setNext($next->getNext());
-                            $first->setKey($nextKey);
-                            
-                            $next->setNext($first);
-                            $next->setKey($firstKey);
-                            $this->_firstNode = $next;
-                        }
-                    }
-                } elseif (-1 >= $compare) {
-                    //won't need to do anything they are already sorted
-                }
-                $link = $next;
+        $link = $this->getFirst();
+        while ($link !== null && null !== ($next = $link->getNext())) {
+            $compare = $predicate($link, $next);
+            if (1 <= $compare) {
+                //The following node is greater than the predicate node, switch them
+                $temp = $link->getValue();
+                $link->setValue($next->getValue());
+                $next->setValue($temp);
+                
+            } elseif (-1 >= $compare) {
+                //won't need to do anything they are already sorted
             }
+            $link = $next;
         }
-        if ($predicate[1] == 'sortDescending') {
-            //I don't feel like doing this... but you get the point
-        }
+        $this->resetKeys($this->getFirst());
     }
     
     /**
@@ -753,7 +673,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function __toString()
     {
         $array = array();
-        $link = $this->_firstNode;
+        $link = $this->getFirst();
         while ($link !== null) {
             $array[$link->getKey()] = $link->getValue();
             $link = $link->getNext();
@@ -772,6 +692,32 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      */
     public function getIterator()
     {
-        //return new \Data\Iterator($this);
+        return new \Data\Iterator($this);
+    }
+    
+    /**
+     * resetKeys function
+     *
+     * will reset every key within the lest starting at $start value
+     *
+     * @param \Data\ILinkedNode $first node to start at
+     * @param double $start the key integer to start the loop
+     */
+    final protected function resetKeys(\Data\ILinkedNode &$first, $start = 0)
+    {
+        if (null === $first) {
+            return;
+        }
+      
+        $count = $start;
+        $n = $first;
+        do {
+            $n->setKey($count);
+            $count++;
+            $n = $n->getNext();
+        }
+        while ($n !== null);
+        
+        return $count;
     }
 }

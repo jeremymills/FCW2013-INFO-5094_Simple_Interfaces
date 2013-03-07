@@ -64,8 +64,6 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
         if (null !== $next) {
             $this->setNext($next);
         }
-        
-        $this->_key = isset($this->_previous) ? $this->_previous->getKey() + 1 : 0;
     }
     
     /**
@@ -86,14 +84,12 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The previously linked node.
      */
-    public function setPrevious(\Data\IDoublyLinkedNode &$previous)
-    {
-        if (isset($this->_previous)) {
-            $this->_previous->setPrevious($this->_previous);
-            $this->_previous->getPrevious()->setNext($previous);
-        }
+    public function setPrevious(\Data\IDoublyLinkedNode $previous = null)
+    {   
         $this->_previous = $previous;
-        $previous->_next = $this;
+        if (null !== $previous) {
+            $previous->_next = $this;
+        }
     }
     
     /**
@@ -116,14 +112,12 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @access public
      * @param IDoublyLinkedNode The IDoublyLinkedNode instance that is next.
      */
-    public function setNext(\Data\IDoublyLinkedNode &$next)
+    public function setNext(\Data\ILinkedNode $next = null)
     {
-        if (isset($this->_next)) {
-            $this->_next->setNext($this->_next);
-            $this->_next->getNext()->setPrevious($next);
-        }
         $this->_next = $next;
-        $next->_previous = $this;
+        if (null !== $next) {
+            $next->_previous = $this;
+        }
     }
     
     /**

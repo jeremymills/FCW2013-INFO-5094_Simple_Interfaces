@@ -54,8 +54,6 @@ class SinglyLinkedNode implements \Data\ILinkedNode
         if (null !== $next) {
             $this->setNext($next);
         }
-        
-        $this->_key = isset($this->_next) ? ($this->getNext()->getKey() - 1) : 0;
     }
     
     /**
@@ -78,13 +76,14 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access public
      * @param ILinkedNode The ILinkedNode instance that is next.
      */
-    public function setNext(\Data\ILinkedNode $next = null)
+    public function setNext(\Data\ILinkedNode $next)
     {
-        $this->_next = $next;
-        if (null !== $next) {
-            if (!($next->getKey())) {
-                $this->_next->setKey($this->getKey() + 1);
-            }
+        if (isset($this->_next)) {
+            $next->_next = $this->_next;
+            $this->_next = $next;
+            
+        } else {
+            $this->_next = $next;
         }
     }
     
