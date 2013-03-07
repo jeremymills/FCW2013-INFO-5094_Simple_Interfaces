@@ -6,7 +6,7 @@
  */
 namespace Data\LinkedLists\Tests;
 
-// require_once __DIR__ . '/../src/Data/LinkedLists/DoublyLinkedLists.php';
+use Data\LinkedLists;
 
 /**
  * DoublyLInkedListTest Class extending PHPUnit_Framework_TestCase
