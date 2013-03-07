@@ -259,7 +259,6 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getNext()->getKey() == $before) {
-                print 'IN';
                 $new = new \Data\LinkedLists\DoublyLinkedNode($value);
                 $new->setNext($link->getNext());
                 $new->setPrevious($link);
@@ -371,7 +370,8 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         $link = $this->getFirst();
         $newFirst = $link->getNext();
         $newFirst->setPrevious(null);
-        $newFirst->setKey(0);
+        $this->_firstNode = $newFirst;
+        parent::resetKeys($newFirst);
         return $link;
     }
     
@@ -387,6 +387,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         $link = $this->getLast();
         $newLast = $link->getPrevious();
         $newLast->setNext(null);
+        $this->_lastNode = $newLast;
         return $link;
     }
     
@@ -412,9 +413,9 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
      */
     public function push($value)
     {
-        $new = new DoublyLinkedNode($value);
+        $new = new \Data\LinkedLists\DoublyLinkedNode($value);
         $this->getLast()->setNext($new);
-        $new->setKey($this->getLast()->getKey() + 1);
+        parent::resetKeys($this->getFirst());
         ++$this->_size;
     }
     
@@ -500,7 +501,6 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
     public function removeLast()
     {
         $last = $this->getLast();
-        print $last->getValue();
         if (isset($last)) {
             --$this->_size;
             $next = $last->getPrevious();
