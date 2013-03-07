@@ -33,5 +33,5 @@ interface ILinkedNode extends INode
      * @access public
      * @param ILinkedNode The ILinkedNode instance that is next.
      */
-    public function setNext(ILinkedNode $next);
+    public function setNext(\Data\ILinkedNode $next);
 }

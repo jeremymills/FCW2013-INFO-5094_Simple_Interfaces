@@ -35,5 +35,5 @@ interface IDoublyLinkedNode extends ILinkedNode
      * @access public
      * @param IDoublyLinkedNode The previously linked node.
      */
-    public function setPrevious(IDoublyLinkedNode &$previous);
+    public function setPrevious(\Data\IDoublyLinkedNode $previous);
 }

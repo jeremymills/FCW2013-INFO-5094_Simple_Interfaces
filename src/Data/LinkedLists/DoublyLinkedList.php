@@ -15,7 +15,7 @@ namespace Data\LinkedLists;
  * @copyright (c) Jeremy Mills
  * @version 1.0.0
  */
-class DoublyLinkedList implements \IDoublyLinkedList
+class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \Data\LinkedLists\IDoublyLinkedList
 {
     /**
      * Private mem var to hold the data of the object
@@ -40,7 +40,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * 
      * @access private
      */
-    private $_size;
+    private $_size = 0;
     
     /**
      * Construct DoublyLinkedList class
@@ -48,16 +48,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * @access public
      * @param DoublyLinkedNode Root node for the linked list
      */
-    public function __construct(DoublyLinkedNode $data)
+    public function __construct()
     {
-        if (null === $data) {
-            throw new \InvalidArgumentException('Data node must not be null');
-        }
-        $this->_data = $data;
-        $this->_size = $this->count();
-        $this->_firstNode = $this->getFirst();
-        $this->_lastNode = $this->getLast();
-        
     }
     
     /**
@@ -68,11 +60,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function getFirst()
     {
-        $link = $this->_data;
-        while ($link !== null && $link->getPrevious() !== null) {
-            $link = $link->getPrevious();
-        }
-        return $link->getValue() !== $this->_data ? $link : null;
+        return parent::getFirst();
     }
     
     /**
@@ -83,11 +71,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function getLast()
     {
-        $link = $this->_data;
-        while ($link !== null && $link->getNext() !== null) {
-            $link = $link->getNext();
-        }
-        return ($link->getValue() !== $this->_data) ? $link : null;
+        return parent::getLast();
     }
     
     /**
@@ -103,12 +87,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function add($value)
     {
-        $new = new DoublyLinkedNode($value, $this);
-        $new->setPrevious($this->_lastNode);
-        $new->setKey($new->getPrevious()->getKey() + 1);
-        $this->_lastNode = $new;
-        ++$this->_size;
-        return $new->getKey();
+        $new = new \Data\LinkedLists\DoublyLinkedNode($value);
+        $this->addNode($new);
     }
     
     /**
@@ -121,13 +101,18 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * @param DoublyLinkedNode $node The IDoublyLinkedNode to add.
      * @return mixed The key value of the node that was added.
      */
-    public function addNode(DoublyLinkedNode $node)
+    public function addNode(\Data\ILinkedNode $node)
     {
-        $node->setPrevious($this->_lastNode);
-        $node->setKey($this->_lastNode->getKey() + 1);
-        $this->_lastNode = $node;
         ++$this->_size;
-        return $node->getKey();
+        if (!($node instanceof \Data\IDoublyLinkedNode)) {
+            throw new \InvalidArgumentException('Invalid node type');
+        }
+        $next = $node->getNext();
+        while ($next !== null) {
+            ++$this->_size;
+            $next = $next->getNext();
+        }
+        return parent::addNode($node);
     }
     
     /**
@@ -141,14 +126,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function asArray()
     {
-        $array = array();
-        $link = $this->_firstNode;
-        while ($link !== null) {
-            $array[$link->getKey()] = $link->getValue();
-            
-            $link = $link->getNext();
-        }
-        return $array;
+        return parent::asArray();
     }
     
     /**
@@ -160,14 +138,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function containsKey($key)
     {
-        $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getKey() == $key) {
-                return true;
-            }
-            $link = $link->getNext();
-        }
-        return false;
+        return parent::containsKey($key);
     }
     
     /**
@@ -179,14 +150,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function contains($value)
     {
-        $list = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getValue() == $value) {
-                return true;
-            }
-            $link = $link->getNext();
-        }
-        return false;
+        return parent::contains($value);
     }
     
     /**
@@ -197,13 +161,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function count()
     {
-        $num = 0;
-        $link = $this->_firstNode;
-        while ($link !== null) {
-            ++$num;
-            $link = $link->getNext();
-        }
-        return $num;
+        return $this->_size;
     }
     
     /**
@@ -215,14 +173,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function find($value)
     {
-        $list = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getValue() == $value) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        return null;
+        return parent::findFirst($value);
     }
     
     /**
@@ -235,15 +186,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function findAll($value)
     {
-        $return = array();
-        $list = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getValue() == $value) {
-                $return[$link->getKey()] = $link;
-            }
-            $link = $link->getNext();
-        }
-        return !empty($return) ? $return : null;
+        return parent::findAll($value);
     }
     
     /**
@@ -255,14 +198,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function findFirst($value)
     {
-        $list = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getValue() == $value) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        return null;
+        return parent::findFirst($value);
     }
     
     /**
@@ -278,8 +214,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function findLast($value)
     {
-        $link = $this->_lastNode;
-        while ($link !== null && $link->getPrevious() !== null) {
+        $link = $this->getLast();
+        while ($link !== null) {
             if ($link->getValue() == $value) {
                 return $link;
             }
@@ -297,14 +233,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function get($key)
     {
-        $list = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
-            if ($link->getKey() == $key) {
-                return $link;
-            }
-            $link = $link->getNext();
-        }
-        return null;
+        return parent::get($key);
     }
     
     /**
@@ -322,22 +251,24 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function insertBefore($before, $value)
     {
-        $link = $this->_firstNode;
-        while ($link->getNext() !== null) {
-            if ($link->getKey() == $before) {
-                ++$this->_size;
-                $new = new DoublyLinkedNode($value, $link->getPrevious, $link);
-                $new->setKey($before);
-                $link->setPrevious($new);
-                while ($link !== null) {
-                    $link->setKey($link->getKey() + 1);
-                    $link = $link->getNext();
-                }
-                break;
+        if ($before == 0) {
+            throw new \InvalidArgumentException('You can not throw a new key before the first in sequence');
+        }
+        
+        $link = $this->getFirst();
+        
+        while ($link !== null && $link->getNext() !== null) {
+            if ($link->getNext()->getKey() == $before) {
+                print 'IN';
+                $new = new \Data\LinkedLists\DoublyLinkedNode($value);
+                $new->setNext($link->getNext());
+                $new->setPrevious($link);
+                
+                parent::resetKeys($this->getFirst());
             }
             $link = $link->getNext();
         }
-        return $new->getKey();
+        return new \InvalidArgumentException('Key does not exist');
     }
     
     /**
@@ -355,24 +286,19 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function insertAfter($after, $value)
     {
-        $link = $this->_firstNode;
-        while ($link->getNext() !== null) {
+        $link = $this->getFirst();
+        while ($link !== null) {
             if ($link->getKey() == $after) {
-                ++$this->_size;
-                $new = new DoublyLinkedNode($value, $link, $link->getNext());
-                $new->setKey($link->getKey() + 1);
-                $new->setPrevious($link);
+                $new = new \Data\LinkedLists\DoublyLinkedNode($value);
                 $new->setNext($link->getNext());
                 $link->setNext($new);
-                while ($new->getNext() !== null) {
-                    $next = $new->getNext();
-                    $next->setKey($next->getKey() + 1);
-                }
-                break;
+                
+                parent::resetKeys($link, $link->getKey());
+                return $new->getKey();
             }
             $link = $link->getNext();
         }
-        return $new->getKey();
+        return new \InvalidArgumentException('Please enter a valid key value');
     }
     
     /**
@@ -383,7 +309,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function isEmpty()
     {
-        return !isset($this->_firstNode);
+        $first = $this->getFirst();
+        return !isset($first);
     }
     
     /**
@@ -405,7 +332,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function peekFirst()
     {
-        $link = &$this->_firstNode;
+        $link = &$this->getFirst();
         return isset($link) ? $link : null;
     }
     
@@ -417,11 +344,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function peekLast()
     {
-        $link = null;
-        if (isset($this->_lastNode)) {
-            $link = &$this->_lastNode;
-        }
-        return $link;
+        $link = &parent::getLast();
+        return isset($link) ? $link : null;
     }
     
     /**
@@ -443,9 +367,9 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function pollFirst()
     {
-        ++$this->_size;
-        $link = $this->_firstNode;
-        $newFirst = $this->_firstNode->getNext();
+        --$this->_size;
+        $link = $this->getFirst();
+        $newFirst = $link->getNext();
         $newFirst->setPrevious(null);
         $newFirst->setKey(0);
         return $link;
@@ -460,8 +384,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
     public function pollLast()
     {
         --$this->_size;
-        $link = $this->_lastNode;
-        $newLast = $this->_lastNode->getPrevious();
+        $link = $this->getLast();
+        $newLast = $link->getPrevious();
         $newLast->setNext(null);
         return $link;
     }
@@ -474,11 +398,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function pop()
     {
-        --$this->_size;
-        $link = $this->_lastNode;
-        $newLast = $this->_lastNode->getPrevious();
-        $newLast->setNext(null);
-        return $link->getValue();
+        return $this->pollLast()->getValue();
     }
     
     /**
@@ -493,9 +413,8 @@ class DoublyLinkedList implements \IDoublyLinkedList
     public function push($value)
     {
         $new = new DoublyLinkedNode($value);
-        $new->setPrevious($this->_lastNode);
-        $this->_lastNode->setNext($new);
-        $new->setKey($this->_lastNode->getKey() + 1);
+        $this->getLast()->setNext($new);
+        $new->setKey($this->getLast()->getKey() + 1);
         ++$this->_size;
     }
     
@@ -510,7 +429,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function remove($value)
     {
-        $link = $this->_firstNode;
+        $link = $this->getFirst();
         while ($link !== null) {
             if ($link->getValue() == $value) {
                 --$this->_size;
@@ -539,25 +458,22 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function removeAt($key)
     {
-        $link = $this->_firstNode;
-        while ($link !== null) {
-            if ($link->getKey() == $key) {
-                --$this->_size;
-                if (null !== $link->getPrevious()) {
-                    $prev = $link->getPrevious();
-                    $prev->setNext($link->getNext());
-                }
-                if (null !== $link->getNext()) {
-                    $new = $link->getNext();
-                    $new->setPrevious($link->getPrevious());
-                    $new->setKey($link->getKey());
-                }
-            }
-            if (!isset($new)) {
-                $link = $link->getNext();
-            }
-            $link = $new;
+        if ($key == 0) {
+            $this->getFirst()->setNext(null);
         }
+        $link = $this->getFirst();
+        while ($link !== null && $link->getNext() !== null) {
+            if ($link->getNext()->getKey() == $key) {
+                --$this->_size;
+                $next = $link->getNext()->getNext();
+                $link->getNext()->setPrevious(null);
+                $link->setNext($next);
+                $next->setPrevious($link);
+            }
+            $link = $link->getNext();
+        }
+        
+        parent::resetKeys($this->getFirst());
     }
     
     /**
@@ -567,12 +483,13 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function removeFirst()
     {
-        if (isset($this->_firstNode)) {
+        $first = $this->getFirst();
+        if (isset($first)) {
             --$this->_size;
-            $next = $this->_firstNode->getNext();
+            $next = $first->getNext();
             $next->setPrevious(null);
-            $next->setKey(0);
         }
+        parent::resetKeys($next);
     }
     
     /**
@@ -582,11 +499,14 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function removeLast()
     {
-        if (isset($this->_lastNode)) {
+        $last = $this->getLast();
+        print $last->getValue();
+        if (isset($last)) {
             --$this->_size;
-            $prev = $this->_lastNode->getPrevious();
-            $prev->setNext(null);
+            $next = $last->getPrevious();
+            $next->setNext(null);
         }
+        parent::resetKeys($this->getFirst());
     }
     
     /**
@@ -598,9 +518,9 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * @access public
      * @param IDoublyLinkedNode $node The node to remove from the list.
      */
-    public function removeNode(DoublyLinkedNode $node)
+    public function removeNode(\Data\ILinkedNode $node)
     {
-        $link = $this->_firstNode;
+        $link = $this->getFirst();
         while ($link !== null && $link->getNext() !== null) {
             if ($link == $node) {
                 --$this->_size;
@@ -609,16 +529,13 @@ class DoublyLinkedList implements \IDoublyLinkedList
                 }
                 if (null !== $link->getNext()) {
                     $link->getNext()->setPrevious($link->getPrevious());
-                    while ($link->getNext() !== null) {
-                        $link->getNext()->setKey($link->getNext()->getKey() + 1);
-                        $link = $link->getNext();
-                    }
                 }
                 $link->setPrevious(null);
                 $link->setNext(null);
             }
             $link = $link->getNext();
         }
+        parent::resetKeys($this->getFirst());
     }
     
     /**
@@ -645,30 +562,24 @@ class DoublyLinkedList implements \IDoublyLinkedList
      */
     public function sortBy(callable $predicate)
     {
+        parent::sortBy($predicate);
+        /*
         $link = $this->getFirst();
         while ($link !== null && null !== ($next = $link->getNext())) {
             $compare = $predicate($link, $next);
             if (1 <= $compare) {
                 //The following node is greater than the predicate node, switch them
-                
-                //set rhs new previous to lhs previous (null | node)
-                $next->setPrevious($link->getPrevious());
-                //set lhs new previous to rhs
-                $link->setPrevious($next);
-                //set lhs new next to rhs old next
-                $link->setNext($next->getNext());
-                //set rhs new key to lhs key
-                $next->setKey($link->getKey());
-                //set rhs new key to rhs new key + 1
-                $link->setKey($next->getKey() + 1);
-                //set rhs new next to lhs
-                $next->setNext($link);
+                $temp = $link->getValue();
+                $link->setValue($next->getValue());
+                $next->setValue($temp);
                 
             } elseif (-1 >= $compare) {
                 //won't need to do anything they are already sorted
             }
             $link = $next;
         }
+        parent::resetKeys($this->getFirst());
+        */
     }
     
     /**
@@ -677,7 +588,7 @@ class DoublyLinkedList implements \IDoublyLinkedList
      * @access public
      * @return double will return 0 | 1 | -1 depending on the given ascending order
      */
-    public function sortAscending(DoublyyLinkedNode $link, DoublyLinkedNode $next)
+    public function sortAscending(\Data\LinkedLists\DoublyLinkedNode $link, \Data\LinkedLists\DoublyLinkedNode $next)
     {
         if ($link->getValue() === $next->getValue()) {
             return 0;
@@ -694,14 +605,26 @@ class DoublyLinkedList implements \IDoublyLinkedList
     public function __toString()
     {
         $array = array();
-        $link = $this->_firstNode;
-        while ($link !== null && $link->getNext() !== null) {
+        $link = $this->getFirst();
+        while ($link !== null) {
             $array[$link->getKey()] = $link->getValue();
+            
             $link = $link->getNext();
         }
         
         foreach ($array as $k => $v) {
-            return "Key: $k => Value: $v \n";
+            $string .= "Key: $k => Value: $v \n";
         }
+        return $string;
+    }
+    
+    /**
+     * getIterator function to be implemented
+     *
+     * @access public
+     */
+    public function getIterator()
+    {
+        return new \Data\Iterator($this);
     }
 }

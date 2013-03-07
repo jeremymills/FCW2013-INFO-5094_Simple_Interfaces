@@ -12,6 +12,7 @@ namespace Data\LinkedLists;
  * any class that wishes to operate as a Linked List.
  * 
  * @author Aaron McGowan <a_mcgowan43905@fanshawec.ca>
+ * @author Jeremy Mills <j_mills44@fanshaweonline.ca>
  * @package Data\LinkedList
  * @version 1.0.0
  */
@@ -26,9 +27,6 @@ interface IDoublyLinkedList extends ILinkedList
      * The reason for this is a result of IDoublyLinkedNodes having reference to the previous node in addition
      * to the next, whereas the ILinkedNode only knows of the next node in the sequence.
      */
-    
-    
-    
     
     
 }
