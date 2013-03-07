@@ -76,6 +76,9 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
             return $this->_firstNode;
         }
         $link = isset($this->_data) ? $this->_data : null;
+        if (isset($this->_firstNode)) {
+            return $link;
+        }
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getKey() == 0) {
                 return $link;
@@ -459,7 +462,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * Returns and removes the first node in the list.
      *
      * @access public
-     * @return ISinglyLinkedNode|null Returns the first node in the list. Will return NULL if the list is empty.
+     * @return ISinglyLinkedNode|null Ret   urns the first node in the list. Will return NULL if the list is empty.
      */
     public function poll()
     {
