@@ -116,12 +116,10 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         
         if (null === $this->getFirst()) {
             $this->_firstNode = $node;
-            //print $node->getValue();
             $next = $node;
             while ($next->getNext() !== null) {
                 $next = $next->getNext();
             }
-            //print $next->getValue();
             $this->_size = isset($next) ? ++$this->_size : $this->_size;
             $this->_lastNode = isset($next) ? $next : $node;
         } else {
@@ -437,7 +435,6 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         --$this->_size;
         $link = $this->getFirst();
         $newFirst = $link->getNext();
-        //print $link->getNext()->getValue();
         $this->_firstNode = $newFirst;
         $this->resetKeys($newFirst);
         return $link;
@@ -573,7 +570,6 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         $last = $this->getLast();
         if (null !== $link) {
             --$this->_size;
-            print $link->getValue();
             while ($link !== null && $link->getNext() !== null) {
                 if ($link->getNext() == $last) {
                     $link->setNext(null);
