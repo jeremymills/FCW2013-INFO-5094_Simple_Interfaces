@@ -78,7 +78,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
     public function testAdd()
-    {   
+    {
         $node = new \Data\LinkedLists\SinglyLinkedNode('foo');
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($node);
@@ -589,7 +589,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
     public function testGetIterator()
-    {  
+    {
         $nodeA = new \Data\LinkedLists\SinglyLinkedNode('cheese');
         $nodeB = new \Data\LinkedLists\SinglyLinkedNode('ham', $nodeA);
         $nodeC = new \Data\LinkedLists\SinglyLinkedNode('bread', $nodeB);

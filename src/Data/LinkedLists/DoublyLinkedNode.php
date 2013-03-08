@@ -85,7 +85,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * @param IDoublyLinkedNode The previously linked node.
      */
     public function setPrevious(\Data\IDoublyLinkedNode $previous = null)
-    {   
+    {
         $this->_previous = $previous;
         if (null !== $previous) {
             $previous->_next = $this;

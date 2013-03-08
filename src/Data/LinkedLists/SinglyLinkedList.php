@@ -24,27 +24,27 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * @access private
      * @var mixed value to hold value location
      */
-    private $_data;
+    protected $_data;
     /**
      * Private Mem Var to hold the current size of list
      *
      * @access private
      * @var double hold current node size
      */
-    private $_size = 0;
+    protected $_size = 0;
     /**
      * Private Mem Var to hold the root node of the List
      *
      * @access private
      * @var SinglyLinkedNode datatype to hold root node data
      */
-    private $_firstNode;
+    protected $_firstNode;
     /**
      * Private mem Var to hold the last node of the List
      * @access private
      * @var SinglyLinkedNode datatype to hold last node data
      */
-    private $_lastNode;
+    protected $_lastNode;
     
     /**
      * Construct SinglyLinkedList class
@@ -726,8 +726,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
             $n->setKey($count);
             $count++;
             $n = $n->getNext();
-        }
-        while ($n !== null);
+        } while ($n !== null);
         
         return $count;
     }

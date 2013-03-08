@@ -15,32 +15,32 @@ namespace Data\LinkedLists;
  * @copyright (c) Jeremy Mills
  * @version 1.0.0
  */
-class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \Data\LinkedLists\IDoublyLinkedList
+class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
 {
     /**
      * Private mem var to hold the data of the object
      * 
      * @access private
      */
-    private $_data;
+    //private $_data;
     /**
      * Private mem var to hold previous node location
      * 
      * @access private
      */
-    private $_firstNode;
+    //private $_firstNode;
     /**
      * Private mem var to hold next nodes location
      * 
      * @access private
      */
-    private $_lastNode;
+    //private $_lastNode;
     /**
      * Private mem var to hold the count of linked list
      * 
      * @access private
      */
-    private $_size = 0;
+    //private $_size = 0;
     
     /**
      * Construct DoublyLinkedList class
@@ -60,6 +60,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
      */
     public function getFirst()
     {
+        //return isset($this->_firstNode) ? $this->_firstNode : null;
         return parent::getFirst();
     }
     
@@ -110,11 +111,6 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         }
         
         //get the size
-        $next = $node->getNext();
-        while ($next !== null) {
-            ++$this->_size;
-            $next = $next->getNext();
-        }
         return parent::addNode($node);
     }
     
@@ -267,6 +263,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
                 $new->setPrevious($link);
                 
                 parent::resetKeys($this->getFirst());
+                return $new->getKey();
             }
             $link = $link->getNext();
         }
@@ -374,7 +371,9 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         $newFirst = $link->getNext();
         $newFirst->setPrevious(null);
         $this->_firstNode = $newFirst;
-        parent::resetKeys($newFirst);
+        $link->setNext(null);
+        parent::resetKeys($this->getFirst());
+        //print $this->getFirst()->getValue();
         return $link;
     }
     
@@ -469,10 +468,13 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         while ($link !== null && $link->getNext() !== null) {
             if ($link->getNext()->getKey() == $key) {
                 --$this->_size;
-                $next = $link->getNext()->getNext();
-                $link->getNext()->setPrevious(null);
-                $link->setNext($next);
-                $next->setPrevious($link);
+                $temp = $link->getNext();
+                $link->setNext($temp->getNext());
+                if (null !== $temp->getNext()) {
+                    $temp->geNext()->setPrevious($link);
+                }
+                $temp->setNext(null);
+                $temp->setPrevious(null);
             }
             $link = $link->getNext();
         }
@@ -491,7 +493,9 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         if (isset($first)) {
             --$this->_size;
             $next = $first->getNext();
+            $first->setNext(null);
             $next->setPrevious(null);
+            $this->_firstNode = $next;
         }
         parent::resetKeys($next);
     }
@@ -616,7 +620,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
         }
         $string = '';
         foreach ($array as $k => $v) {
-            $string .= "Key: $k => Value: $v \n";
+            $string .= "Key: $k => Value: $v | ";
         }
         return $string;
     }
