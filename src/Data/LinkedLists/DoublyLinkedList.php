@@ -88,7 +88,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
     public function add($value)
     {
         $new = new \Data\LinkedLists\DoublyLinkedNode($value);
-        $this->addNode($new);
+        return $this->addNode($new);
     }
     
     /**
@@ -104,9 +104,12 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
     public function addNode(\Data\ILinkedNode $node)
     {
         ++$this->_size;
+        
         if (!($node instanceof \Data\IDoublyLinkedNode)) {
             throw new \InvalidArgumentException('Invalid node type');
         }
+        
+        //get the size
         $next = $node->getNext();
         while ($next !== null) {
             ++$this->_size;
@@ -611,7 +614,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
             
             $link = $link->getNext();
         }
-        
+        $string = '';
         foreach ($array as $k => $v) {
             $string .= "Key: $k => Value: $v \n";
         }

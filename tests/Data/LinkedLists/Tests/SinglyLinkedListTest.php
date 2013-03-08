@@ -52,6 +52,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($node, $test->getFirst());
         $this->assertEquals('foo', $test->getFirst()->getValue());
+        
     }
     
     /**
@@ -68,6 +69,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($next, $test->getLast());
         $this->assertEquals('bar', $test->getLast()->getValue());
+        
     }
     
     /**
@@ -82,7 +84,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test->addNode($node);
         
         $this->assertEquals(0, $node->getKey());
-        $this->assertEquals(1, $test->add('pineapples'));
+        $test->add('pineapples');
         $this->assertEquals('pineapples', $node->getNext()->getValue());
     }
     
@@ -98,10 +100,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test->addNode($nodeA);
         
         $nodeB = new \Data\LinkedLists\SinglyLinkedNode('pool');
-        $this->assertEquals(1, $test->addNode($nodeB));
+        $test->addNode($nodeB);
         
         $nodeC = new \Data\LinkedLists\SinglyLinkedNode('cool');
-        $this->assertEquals(2, $test->addNode($nodeC));
+        $test->addNode($nodeC);
         $this->assertEquals('cool', $nodeB->getNext()->getValue());
     }
     
@@ -120,9 +122,9 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, is_array($test));
         
         $array = $test->asArray($test);
+        $this->assertEquals(true, is_array($array));
         $this->assertEquals('great', $array[0]);
         $this->assertEquals('scott', $array[1]);
-        $this->assertEquals(true, is_array($array));
     }
     
     /**
@@ -172,7 +174,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test->addNode($node);
         
         $this->assertEquals(2, $test->count());
-        $this->assertEquals(2, $test->add('pineapples'));
+        $this->assertEquals(2, $test->add('pinnapples'));
+        //print_r ($test->asArray());
         $this->assertEquals(3, $test->count());
     }
     
@@ -305,6 +308,9 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
         $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList();
+        
+        $this->assertEquals(true, $test->isEmpty());
+        
         $test->addNode($node);
         
         $this->assertEquals(false, $test->isEmpty());
@@ -355,7 +361,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($nodeC);
         
-        $this->assertEquals($nodeA, $test->peekLast()); 
+        $this->assertEquals($nodeA, $test->peekLast());
     }
     
     /**
@@ -373,7 +379,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals('thing', $test->getFirst()->getValue());
         $this->assertEquals($nodeC, $test->poll());
-        $this->assertEquals(2, $test->count());
+        $this->assertEquals(1, $test->count());
         $this->assertEquals('place', $test->getFirst()->getValue());
     }
     
@@ -392,7 +398,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals('thing', $test->getFirst()->getValue());
         $this->assertEquals($nodeC, $test->poll());
-        $this->assertEquals(2, $test->count());
+        $this->assertEquals(1, $test->count());
         $this->assertEquals('place', $test->getFirst()->getValue());
     }
     
@@ -411,7 +417,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('person', $test->getLast()->getValue());
         $this->assertEquals($nodeA, $test->pollLast());
-        $this->assertEquals(2, $test->count());
+        $this->assertEquals(1, $test->count());
         $this->assertEquals('place', $test->getLast()->getValue());
     }
     
@@ -483,6 +489,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals('cake', $test->getLast()->getValue());
         $test->removeAt(1);
+        //print_r ($test->asArray());
         $this->assertEquals('cup', $test->getLast()->getValue());
     }
     
@@ -514,7 +521,7 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $nodeA = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
         $nodeB = new \Data\LinkedLists\SinglyLinkedNode('muffin', $nodeA);
         $test = new \Data\LinkedLists\SinglyLinkedList();
-        $test->addNode($node);
+        $test->addNode($nodeB);
         
         $test->removeLast();
         
@@ -550,7 +557,6 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testSort()
     {
-	
         $next = new \Data\LinkedLists\SinglyLinkedNode('cup');
         $node = new \Data\LinkedLists\SinglyLinkedNode('cake', $next);
         $test = new \Data\LinkedLists\SinglyLinkedList();
@@ -573,7 +579,8 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($nodeC);
         
-        
+        $this->expectOutputString('Key: 0 => Value: bread | Key: 1 => Value: ham | Key: 2 => Value: cheese | ');
+        print $test;
     }
     
     /**
@@ -582,14 +589,12 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      * @access public
      */
     public function testGetIterator()
-    {
+    {  
         $nodeA = new \Data\LinkedLists\SinglyLinkedNode('cheese');
         $nodeB = new \Data\LinkedLists\SinglyLinkedNode('ham', $nodeA);
         $nodeC = new \Data\LinkedLists\SinglyLinkedNode('bread', $nodeB);
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($nodeC);
         
-      
     }
-    
 }
