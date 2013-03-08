@@ -46,7 +46,6 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      * Construct DoublyLinkedList class
      *
      * @access public
-     * @param DoublyLinkedNode Root node for the linked list
      */
     public function __construct()
     {
@@ -99,7 +98,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      * it is the next key in the list's key sequence.
      *
      * @access public
-     * @param DoublyLinkedNode $node The IDoublyLinkedNode to add.
+     * @param \Data\ILinkedNode $node The IDoublyLinkedNode to add.
      * @return mixed The key value of the node that was added.
      */
     public function addNode(\Data\ILinkedNode $node)
@@ -532,7 +531,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      * will be adjusted.
      *
      * @access public
-     * @param IDoublyLinkedNode $node The node to remove from the list.
+     * @param \Data\ILinkedNode $node The node to remove from the list.
      */
     public function removeNode(\Data\ILinkedNode $node)
     {
@@ -603,6 +602,8 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      *
      * @access public
      * @return double will return 0 | 1 | -1 depending on the given ascending order
+     * @param \Data\LinkedLists\DoublyLinkedNode $link left hand side
+     * @param \Data\LinkedLists\DoublyLinkedNode $next right hand side 
      */
     public function sortAscending(\Data\LinkedLists\DoublyLinkedNode $link, \Data\LinkedLists\DoublyLinkedNode $next)
     {
