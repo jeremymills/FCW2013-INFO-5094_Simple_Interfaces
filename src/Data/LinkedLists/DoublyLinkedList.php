@@ -103,18 +103,22 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList// implements \
      */
     public function addNode(\Data\ILinkedNode $node)
     {
-        ++$this->_size;
+        // ++$this->_size;
         
         if (!($node instanceof \Data\IDoublyLinkedNode)) {
             throw new \InvalidArgumentException('Invalid node type');
         }
         
+        if (null !== ($previous = $node->getPrevious())) {
+            $node->setPrevious(null);
+        }
+        
         //get the size
-        $next = $node->getNext();
+        /* $next = $node->getNext();
         while ($next !== null) {
             ++$this->_size;
             $next = $next->getNext();
-        }
+        } */
         return parent::addNode($node);
     }
     
