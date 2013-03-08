@@ -104,13 +104,22 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      */
     public function addNode(\Data\ILinkedNode $node)
     {
-        ++$this->_size;
+        // ++$this->_size;
         
         if (!($node instanceof \Data\IDoublyLinkedNode)) {
             throw new \InvalidArgumentException('Invalid node type');
         }
         
+        if (null !== ($previous = $node->getPrevious())) {
+            $node->setPrevious(null);
+        }
+        
         //get the size
+        /* $next = $node->getNext();
+        while ($next !== null) {
+            ++$this->_size;
+            $next = $next->getNext();
+        } */
         return parent::addNode($node);
     }
     
@@ -245,7 +254,7 @@ class DoublyLinkedList extends \Data\LinkedLists\SinglyLinkedList
      *
      * @access public
      * @param int $before Contains the key value to insert a new IDoublyLinkedNode before.
-     * @param mixed $value Contains the value used to create a new IDoublyLinkedNode with and inserted before $before.
+     * @param mixed $value Contains the value used to create a new IDoublyLinkedNode with and inserted before   $before.
      * @return int Returns the newly create IDoublyLinkedNode's key.
      */
     public function insertBefore($before, $value)

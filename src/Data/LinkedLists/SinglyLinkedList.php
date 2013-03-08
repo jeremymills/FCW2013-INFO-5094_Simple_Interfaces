@@ -120,6 +120,19 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function addNode(\Data\ILinkedNode $node)
     {
         $node->setKey($this->_size);
+        if (null === $this->_firstNode) {
+          $this->_firstNode = $node;
+          $this->_lastNode = $this->_firstNode;
+        }
+        else {
+          $this->_lastNode->setNext($node);
+          $this->_lastNode = $this->_lastNode->getNext();
+        }
+        
+        $this->_size++;
+        return $this;
+        
+        /* $node->setKey($this->_size);
         
         if (null === $this->getFirst()) {
             $this->_firstNode = $node;
@@ -135,7 +148,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
         }
         $this->resetKeys($this->getFirst());
         ++$this->_size;
-        return $this->getLast()->getKey();
+        return $this->getLast()->getKey(); */
     }
     
     /**
@@ -704,6 +717,28 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function getIterator()
     {
         return new \Data\Iterator($this);
+    }
+    
+    /**
+     * Reverses this list's set of nodes.
+     *
+     * @access public
+     */
+    public function reverse() {
+      if (0 === $this->_size) {
+        return;
+      }
+      
+      $o = clone $this;
+      $this->_firstNode = null;
+      $this->_lastNode = null;
+      $this->_size = 0;
+      
+      $count = $o->_size;
+      while ($this->_size < $count) {
+        $this->add($o->pop());
+        ++$this->_size;
+      }
     }
     
     /**
