@@ -31,9 +31,11 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     {
         $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cheese');
         $nodeB = new \Data\LinkedLists\DoublyLinkedNode('bread');
-        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('ham', $nodeB, $nodeA);
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('ham');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeA);
+        $test->addNode($nodeB);
         $test->addNode($nodeC);
         
         $this->assertEquals(false, $test->isEmpty());
@@ -46,13 +48,16 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFirst()
     {
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('love', null, $nodeA);
-        $node = new \Data\LinkedLists\DoublyLinkedNode('i', null, $nodeB);
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cupcakes');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('love');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('i');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
-        $test->addNode($node);
-        $this->assertEquals($node, $test->getFirst());
+        $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
+        
+        $this->assertEquals($nodeA, $test->getFirst());
     }
     
     /**
@@ -63,11 +68,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testGetLast()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('here');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('we', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('we');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeC, $test->getLast());
         $this->assertEquals('here', $test->getLast()->getValue());
@@ -81,11 +88,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testAdd()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('the');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('penguins', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('penguins');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(0, $nodeA->getKey());
         $this->assertEquals(1, $nodeB->getKey());
@@ -102,11 +111,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testAddNode()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('quite');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('penguins', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('penguins');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $nodeD = new \Data\LinkedLists\DoublyLinkedNode('fancy');
         $this->assertEquals(3, $test->addNode($nodeD));
@@ -123,11 +134,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testAsArray()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('hiel');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('marie louise', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('carlie', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('marie louise');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('carlie');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(false, is_array($test));
         
@@ -146,11 +159,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testContainsKey()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('pear');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('apple', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('banana', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('apple');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('banana');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(true, $test->containsKey(0));
         $this->assertEquals(true, $test->containsKey(1));
@@ -167,11 +182,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testContains()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('ready');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('you', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('you');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('are');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(true, $test->contains('are'));
         $this->assertEquals(true, $test->contains('you'));
@@ -187,18 +204,20 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testCount()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('pepperoni');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cheese', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('pizza', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cheese');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('pizza');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
-        //$this->assertEquals(3, $test->count());
+        $this->assertEquals(3, $test->count());
         
         $nodeD = new \Data\LinkedLists\DoublyLinkedNode('mushroom');
         $this->assertEquals(3, $test->addNode($nodeD));
         
-        //$this->assertEquals(4, $test->count());
+        $this->assertEquals(4, $test->count());
     }
     
     /**
@@ -209,14 +228,16 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testFind()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cool');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('pools', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('pools');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeA);
+        $test->addNode($nodeB);
         $test->addNode($nodeC);
         
-        //$this->assertEquals($nodeB, $test->find('are'));
-        //$this->assertEquals($nodeA, $test->find('pools'));
+        $this->assertEquals($nodeB, $test->find('are'));
+        $this->assertEquals($nodeA, $test->find('pools'));
         $this->assertEquals(null, $test->find('fool'));
     }
     
@@ -228,11 +249,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testFindAll()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('beats');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('bears', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('beats', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('bears');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('beats');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         //$test->findAll('beats');
         //$this->assertEquals(array($nodeA, $nodeC), $test->findAll('beats'));
     }
@@ -245,11 +268,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testFindFirst()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('say');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('what', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('say', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('what');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('say');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->findFirst('say'));
     }
@@ -262,11 +287,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testFindLast()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('say');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('what', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('say', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('what');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('say');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeC, $test->findLast('say'));
     }
@@ -279,11 +306,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testGet()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('battlestar galactica');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('beats', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('bears', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('beats');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('bears');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA->getValue(), $test->get(0)->getValue());
         $this->assertEquals($nodeB->getValue(), $test->get(1)->getValue());
@@ -297,11 +326,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testInsertBefore()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('carlie');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('am', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('i', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('am');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('i');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(1, $test->insertBefore(1, 'really'));
     }
@@ -314,11 +345,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testInsertAfter()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('carlie');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('am', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('i', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('am');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('i');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(3, $test->insertAfter(2, 'hiel'));
     }
@@ -331,14 +364,15 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testIsEmpty()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cheese');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('bread', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ham', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('bread');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ham');
         
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $this->assertEquals(true, $test->isEmpty());
         
-        $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(false, $test->isEmpty());
     }
@@ -351,11 +385,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPeek()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('yummy');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->peek());
     }
@@ -368,11 +404,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPeekFirst()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('yummy');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->peekFirst());
     }
@@ -385,11 +423,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPeekLast()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('yummy');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cupcakes');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeC, $test->peekLast());
     }
@@ -402,11 +442,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPoll()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->poll());
         $this->assertEquals('cream', $test->getFirst()->getValue());
@@ -420,11 +462,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPollFirst()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->pollFirst());
         $this->assertEquals('cream', $test->getFirst()->getValue());
@@ -438,11 +482,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPollLast()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeC, $test->pollLast());
         //print $test->getLast()->getValue();
@@ -457,11 +503,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPop()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals('sandwich', $test->pop());
         $this->assertEquals('cream', $test->getLast()->getValue());
@@ -475,11 +523,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPush()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwiches');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(3, $test->count());
         
@@ -500,11 +550,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testRemove()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('them all');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('to rule', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('one ring', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('to rule');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('one ring');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         //$this->assertEquals(3, $this->count());
         $test->remove('them all');
@@ -521,11 +573,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testRemoveAt()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals('sandwich', $test->getLast()->getValue());
         
@@ -541,11 +595,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testRemoveFirst()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cool');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('muffins', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('muffins');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $test->removeFirst();
         $this->assertEquals('are', $test->getFirst()->getValue());
@@ -559,11 +615,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testRemoveLast()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('cool');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('muffins', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('are');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('muffins');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $test->removeLast();
         $this->assertEquals('are', $test->getLast()->getValue());
@@ -577,11 +635,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testRemoveNode()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('sandwich');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('cream');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('ice');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals(3, $test->count());
         $test->removeNode($nodeA);
@@ -596,11 +656,13 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testSort()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('2');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('1', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('3', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('1');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('3');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->assertEquals($nodeA, $test->getFirst());
         $this->assertEquals(3, $test->getFirst()->getValue());
@@ -619,13 +681,30 @@ class DoublyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testToString()
     {
         $nodeC = new \Data\LinkedLists\DoublyLinkedNode('bottom');
-        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('middle', null, $nodeC);
-        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('top', null, $nodeB);
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('middle');
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('top');
                 
         $test = new \Data\LinkedLists\DoublyLinkedList();
         $test->addNode($nodeA);
+        $test->addNode($nodeB);
+        $test->addNode($nodeC);
         
         $this->expectOutputString('Key: 0 => Value: top | Key: 1 => Value: middle | Key: 2 => Value: bottom | ');
         print $test;
+    }
+    
+    /**
+     * testGetIterator tests getIterator() function
+     *
+     * @access public
+     */
+    public function testGetIterator()
+    {
+        $nodeA = new \Data\LinkedLists\DoublyLinkedNode('cheese');
+        $nodeB = new \Data\LinkedLists\DoublyLinkedNode('ham', $nodeA);
+        $nodeC = new \Data\LinkedLists\DoublyLinkedNode('bread', $nodeB);
+        $test = new \Data\LinkedLists\DoublyLinkedList();
+        $test->addNode($nodeC);
+        
     }
 }

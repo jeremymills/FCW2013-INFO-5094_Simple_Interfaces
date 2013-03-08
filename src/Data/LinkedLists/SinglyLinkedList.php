@@ -120,17 +120,17 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
     public function addNode(\Data\ILinkedNode $node)
     {
         $node->setKey($this->_size);
+        
         if (null === $this->_firstNode) {
           $this->_firstNode = $node;
           $this->_lastNode = $this->_firstNode;
-        }
-        else {
+        } else {
           $this->_lastNode->setNext($node);
           $this->_lastNode = $this->_lastNode->getNext();
         }
         
         $this->_size++;
-        return $this;
+        return $this->getLast()->getKey();
         
         /* $node->setKey($this->_size);
         
