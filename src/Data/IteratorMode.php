@@ -11,8 +11,8 @@ namespace Data;
  * The IteratorMode class is used to operate as an ENUM data
  * type allow for the mode options to be specified.
  *
- * @author Aaron McGowan <a_mcgowan43905@fanshawec.ca>
- * @package McGowanCorp\Data
+ * @author Shane Ducharme
+ * @package Data
  * @version 1.0.0
  */
 class IteratorMode
@@ -21,4 +21,27 @@ class IteratorMode
     const DELETE    = 2;
     const FIFO      = 4;
     const LIFO      = 8;
+
+	public static function isKeep($mode)
+	{
+		return 1 == ($mode & self::KEEP);
+	}
+	
+	public static function isFifo($mode)
+	{
+		return 4 == ($mode & self::FIFO);
+	}
+
+	public static function isLifo($mode)
+	{ 
+		return 8 == ($mode & self::LIFO);
+	}
+	
+	public static function isDelete($mode)
+	{
+		return 2 == ($mode & self::DELETE);
+	}
 }
+	 
+
+

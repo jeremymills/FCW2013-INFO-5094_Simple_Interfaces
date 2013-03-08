@@ -26,7 +26,7 @@ class Iterator implements \IIterator
      *@access private
      *@var int
      */
-    private $_mode;
+    private $mode;
 
 	/**
      *variable to keep track of position or key of the array
@@ -41,52 +41,23 @@ class Iterator implements \IIterator
      *
      *@access public
      *@return void
+     *@throws InvalidArgumentException
      */
-	public function __construct($ArrayObject, \Data\IteratorMode $mode=null)
+	public function __construct(ILinkedList $_array, $mode=0)
     {
-        if ($mode !== null) 
-        {
-            if ($mode !== 1 || $mode !== 2 || $mode !== 4 || $mode !== 8) 
-            {
-                    throw new \InvalidArgumentException('Please enter a valid mode ');
-            }
-            if ($mode == 4) 
-            {
-                $this->_mode = function($a,$b) 
-                {
-                    return ($a->getKey() < $b->getKey());
-                }
-            }
-
-            if ($mode == 8)
-            {
-                $this->_mode = function($a,$b)
-                {
-                    return ($a->getKey() > $b->getKey());
-                }
-            }
-            if ($mode == 2)
-            {
-                $this->_mode = function($a,$b)
-                {
-
-                }
-            }
-            if ($mode == 1)
-            {
-                $this->_mode = function($a, $b)
-                {
-                    
-                }
-            }
-
+        if(!$mode) {
+            $mode = IteratorMode::KEEP | IteratorMode::FIFO;
         }
 
-        $this->mode = $mode;
-        $this->setMode[$mode]; 
-
-    	$this->_array = $ArrayObject;
+        $this->_array = $_array;
+        $this->setMode($mode); 
         $this->rewind();
+
+
+        if (IteratorMode::isLifo($this->mode))
+        {
+            $this->_array->reverse();
+        }
     }
 
     /**
@@ -97,7 +68,7 @@ class Iterator implements \IIterator
      */
     public function current()
     {
-    	return $this->_array[$this->_position];
+    	return $this->_array->get($this->_position);
     }
 
     /**
@@ -119,7 +90,15 @@ class Iterator implements \IIterator
      */
     public function next()
     {
-    	$this->_position++;
+    	if (IteratorMode::isDelete($this->mode))
+        {
+            $this->_array->removeAt($this->_position);
+        }
+        else
+        {
+           $this->_position++; 
+        }
+        
     }
 
     /**
@@ -141,7 +120,7 @@ class Iterator implements \IIterator
      */
     public function valid()
     {
-        return isset($this->_array[$this->_position]);
+        return $this->_position < $this->count();
     }
 
     /**
@@ -150,9 +129,9 @@ class Iterator implements \IIterator
      * @access public
      * @param int Contains an IteratorMode const value.
      */
-    public function setMode($mode)
+    public function setMode(mode$mode)
     {
-        $this->mode = Data\IteratorMode $mode;
+        $this->mode = $mode;
     }
     
     /**
