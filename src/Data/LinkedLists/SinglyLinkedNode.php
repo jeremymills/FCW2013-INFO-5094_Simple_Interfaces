@@ -46,13 +46,10 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * @access public
      * @param SinglyLinkedNode The node to be created
      */
-    public function __construct($value = null, $next = null)
+    public function __construct($value = null)
     {
         if (null !== $value) {
             $this->setValue($value);
-        }
-        if (null !== $next) {
-            $this->setNext($next);
         }
     }
     
@@ -74,7 +71,7 @@ class SinglyLinkedNode implements \Data\ILinkedNode
      * this instance within a List.
      *
      * @access public
-     * @param ILinkedNode The ILinkedNode instance that is next.
+     * @param \Data\ILinkedNode The ILinkedNode instance that is next.
      */
     public function setNext(\Data\ILinkedNode $next = null)
     {

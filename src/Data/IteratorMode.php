@@ -21,22 +21,45 @@ class IteratorMode
     const DELETE    = 2;
     const FIFO      = 4;
     const LIFO      = 8;
-
+        /**
+         * isKeep
+         *
+         * @param int $mode mode
+         * @access public
+         */
 	public static function isKeep($mode)
 	{
 		return 1 == ($mode & self::KEEP);
 	}
-	
+        
+	/**
+         * isFifo
+         *
+         * @param int $mode mode
+         * @access public
+         */
 	public static function isFifo($mode)
 	{
 		return 4 == ($mode & self::FIFO);
 	}
-
+        
+        /**
+         * isLifo
+         *
+         * @param int $mode mode
+         * @access public
+         */
 	public static function isLifo($mode)
 	{ 
 		return 8 == ($mode & self::LIFO);
 	}
-	
+        
+	/**
+         * isDelete
+         *
+         * @param int $mode mode
+         * @access public
+         */
 	public static function isDelete($mode)
 	{
 		return 2 == ($mode & self::DELETE);

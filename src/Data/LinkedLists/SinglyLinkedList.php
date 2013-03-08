@@ -114,7 +114,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * it is the next key in the list's key sequence.
      *
      * @access public
-     * @param ISinglyLinkedNode $node The ISinglyLinkedNode to add.
+     * @param \Data\ILinkedNode $node The ISinglyLinkedNode to add.
      * @return mixed The key value of the node that was added.
      */
     public function addNode(\Data\ILinkedNode $node)
@@ -610,7 +610,7 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      * will be adjusted.
      *
      * @access public
-     * @param ISinglyLinkedNode $node The node to remove from the list.
+     * @param \Data\ILinkedNode $node The node to remove from the list.
      */
     public function removeNode(\Data\ILinkedNode $node)
     {
@@ -677,6 +677,8 @@ class SinglyLinkedList implements \Data\LinkedLists\ILinkedList
      *
      * @access public
      * @return double will return 0 | 1 | -1 depending on the given ascending order
+     * @param SinglyLinkedNode $link left hand side
+     * @param SinglyLinkedNode $next right hand side 
      */
     public function sortAscending(SinglyLinkedNode $link, SinglyLinkedNode $next)
     {

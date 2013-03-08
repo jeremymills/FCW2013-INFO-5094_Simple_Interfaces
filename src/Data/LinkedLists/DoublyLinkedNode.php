@@ -52,17 +52,12 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * 
      * @access public
      * @param IDoublyLinkedNode The node to be created
+     * 
      */
-    public function __construct($data = null, $prev = null, $next = null)
+    public function __construct($data = null)
     {
         if (null !== $data) {
             $this->setValue($data);
-        }
-        if (null !== $prev) {
-            $this->setPrevious($prev);
-        }
-        if (null !== $next) {
-            $this->setNext($next);
         }
     }
     
@@ -82,7 +77,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * Sets the previous node.
      *
      * @access public
-     * @param IDoublyLinkedNode The previously linked node.
+     * @param \Data\IDoublyLinkedNode The previously linked node.
      */
     public function setPrevious(\Data\IDoublyLinkedNode $previous = null)
     {
@@ -110,7 +105,7 @@ class DoublyLinkedNode implements \Data\IDoublyLinkedNode
      * this instance within a List.
      *
      * @access public
-     * @param IDoublyLinkedNode The IDoublyLinkedNode instance that is next.
+     * @param \Data\ILinkedNode $next The IDoublyLinkedNode instance that is next.
      */
     public function setNext(\Data\ILinkedNode $next = null)
     {
