@@ -6,17 +6,16 @@
  */
 namespace Data\LinkedLists\Tests;
 
-require_once __DIR__ . '/../src/Data/LinkedLists/SinglyLinkedLists.php';
+use Data\LinkedLists;
 
 /**
  * SinglyLInkedListTest Class extending PHPUnit_Framework_TestCase
  *
  * @package Data\LinkedLists\Tests
  * 
- * @author Alex Jones-Chick
  * @author Jeremy Mills
- * @author Jaide Haynes
  * @author Carlie Hiel
+ * @author Shane Ducharme
  * 
  * @copyright 2013 INFO-5094 - Group A
  * @version PHP 5.3
@@ -30,7 +29,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testInit()
     {
-        
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals(false, $test->isEmpty());
     }
     
     /**
@@ -40,7 +42,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFirst()
     {
-        
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals($node, $test->getFirst());
     }
     
     /**
@@ -50,7 +55,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetLast()
     {
-        
+        $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $test = new \Data\LinkedLists\SinglyLinkedList($node);
+        $this->assertEquals($next, $test->getLast());
     }
     
     /**
