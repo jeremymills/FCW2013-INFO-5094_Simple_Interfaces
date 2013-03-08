@@ -1,5 +1,8 @@
 <?php 
 
+/**
+ * Data namespace
+ */
 namespace Data;
 
 /**
@@ -12,7 +15,7 @@ namespace Data;
  */
 class Iterator implements \IIterator
 {
-	/**
+   /**
      *the main array
      *
      *@access private
@@ -42,6 +45,8 @@ class Iterator implements \IIterator
      *@access public
      *@return void
      *@throws InvalidArgumentException
+     *@param ILinkedList $_array array
+     *@param int $mode mode
      */
 	public function __construct(ILinkedList $_array, $mode=0)
     {
@@ -127,7 +132,7 @@ class Iterator implements \IIterator
      * Sets the iterator mode type.
      *
      * @access public
-     * @param int Contains an IteratorMode const value.
+     * @param mode $mode Contains an IteratorMode const value.
      */
     public function setMode(mode$mode)
     {

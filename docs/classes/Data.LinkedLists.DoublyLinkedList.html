@@ -34,7 +34,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">3</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -60,17 +60,20 @@
 <i class="icon-custom icon-method"></i> Methods
                     <ul>
 <li class="method public "><a href="#method___construct" title="__construct :: Construct DoublyLinkedList class"><span class="description">Construct DoublyLinkedList class</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method___toString" title="__toString :: ToString function to preview the sorted linked list in String format"><span class="description">ToString function to preview the sorted linked list in String format</span><pre>__toString()</pre></a></li>
 <li class="method public "><a href="#method_add" title="add :: Adds a value onto the end of the list."><span class="description">Adds a value onto the end of the list.</span><pre>add()</pre></a></li>
 <li class="method public "><a href="#method_addNode" title="addNode :: Adds an IDoublyLinkedNode instance onto the end of the list."><span class="description">Adds an IDoublyLinkedNode instance onto the end of the list.</span><pre>addNode()</pre></a></li>
 <li class="method public "><a href="#method_asArray" title="asArray :: Returns the list as an associative array."><span class="description">Returns the list as an associative array.</span><pre>asArray()</pre></a></li>
 <li class="method public "><a href="#method_contains" title="contains :: Checks if the list contains a node with the specified value."><span class="description">Checks if the list contains a node with the specified value.</span><pre>contains()</pre></a></li>
 <li class="method public "><a href="#method_containsKey" title="containsKey :: Checks if the list contains a node with the specified key value."><span class="description">Checks if the list contains a node with the specified key value.</span><pre>containsKey()</pre></a></li>
+<li class="method public "><a href="#method_count" title="count :: returns the size of the linked List"><span class="description">returns the size of the linked List</span><pre>count()</pre></a></li>
 <li class="method public "><a href="#method_find" title="find :: Returns the IDoublyLinkedNode object by the specified value."><span class="description">Returns the IDoublyLinkedNode object by the specified value.</span><pre>find()</pre></a></li>
 <li class="method public "><a href="#method_findAll" title="findAll :: Returns an array of all IDoublyLinkedNodes found by the specified value."><span class="description">Returns an array of all IDoublyLinkedNodes found by the specified value.</span><pre>findAll()</pre></a></li>
 <li class="method public "><a href="#method_findFirst" title="findFirst :: Returns the first IDoublyLinkedNode instance found by with the specified value."><span class="description">Returns the first IDoublyLinkedNode instance found by with the specified value.</span><pre>findFirst()</pre></a></li>
 <li class="method public "><a href="#method_findLast" title="findLast :: Returns the last IDoublyLinkedNode instance found by the specified value."><span class="description">Returns the last IDoublyLinkedNode instance found by the specified value.</span><pre>findLast()</pre></a></li>
 <li class="method public "><a href="#method_get" title="get :: Returns the IDoublyLinkedNode at the specified $key."><span class="description">Returns the IDoublyLinkedNode at the specified $key.</span><pre>get()</pre></a></li>
 <li class="method public "><a href="#method_getFirst" title="getFirst :: Returns the first element in the list."><span class="description">Returns the first element in the list.</span><pre>getFirst()</pre></a></li>
+<li class="method public "><a href="#method_getIterator" title="getIterator :: getIterator function to be implemented"><span class="description">getIterator function to be implemented</span><pre>getIterator()</pre></a></li>
 <li class="method public "><a href="#method_getLast" title="getLast :: Returns the last element in the list."><span class="description">Returns the last element in the list.</span><pre>getLast()</pre></a></li>
 <li class="method public "><a href="#method_insertAfter" title="insertAfter :: Inserts a new IDoublyLinkedNode after the specified key."><span class="description">Inserts a new IDoublyLinkedNode after the specified key.</span><pre>insertAfter()</pre></a></li>
 <li class="method public "><a href="#method_insertBefore" title="insertBefore :: Inserts a new IDoublyLinkedNode at before the specified key."><span class="description">Inserts a new IDoublyLinkedNode at before the specified key.</span><pre>insertBefore()</pre></a></li>
@@ -88,16 +91,26 @@
 <li class="method public "><a href="#method_removeFirst" title="removeFirst :: Removes the first node from the list."><span class="description">Removes the first node from the list.</span><pre>removeFirst()</pre></a></li>
 <li class="method public "><a href="#method_removeLast" title="removeLast :: Removes the last node from the list."><span class="description">Removes the last node from the list.</span><pre>removeLast()</pre></a></li>
 <li class="method public "><a href="#method_removeNode" title="removeNode :: Removes the specified node from the list."><span class="description">Removes the specified node from the list.</span><pre>removeNode()</pre></a></li>
+<li class="method public inherited"><a href="#method_reverse" title="reverse :: Reverses this list's set of nodes."><span class="description">Reverses this list's set of nodes.</span><pre>reverse()</pre></a></li>
 <li class="method public "><a href="#method_sort" title="sort :: Sorts the list by the node values."><span class="description">Sorts the list by the node values.</span><pre>sort()</pre></a></li>
+<li class="method public "><a href="#method_sortAscending" title="sortAscending :: Sort Ascending Function to sort given list with ascending property"><span class="description">Sort Ascending Function to sort given list with ascending property</span><pre>sortAscending()</pre></a></li>
 <li class="method public "><a href="#method_sortBy" title="sortBy :: Sorts the list by using a callback to specify the value to compare on."><span class="description">Sorts the list by using a callback to specify the value to compare on.</span><pre>sortBy()</pre></a></li>
 </ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul><li class="method protected inherited"><a href="#method_resetKeys" title="resetKeys :: resetKeys function"><span class="description">resetKeys function</span><pre>resetKeys()</pre></a></li></ul>
 </li>
 <li class="nav-header">
 <i class="icon-custom icon-property"></i> Properties
                     <ul></ul>
 </li>
-<li class="nav-header private">» Private
-                    <ul><li class="property private "><a href="#property__tail_node" title="$_tail_node :: Private Mem Var to hold the tail node"><span class="description"></span><pre>$_tail_node</pre></a></li></ul>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected inherited"><a href="#property__data" title="$_data :: Private Mem Var to hold the current value of the ISinglyLinkedNode instance"><span class="description"></span><pre>$_data</pre></a></li>
+<li class="property protected inherited"><a href="#property__firstNode" title="$_firstNode :: Private Mem Var to hold the root node of the List"><span class="description"></span><pre>$_firstNode</pre></a></li>
+<li class="property protected inherited"><a href="#property__lastNode" title="$_lastNode :: Private mem Var to hold the last node of the List"><span class="description"></span><pre>$_lastNode</pre></a></li>
+<li class="property protected inherited"><a href="#property__size" title="$_size :: Private Mem Var to hold the current size of list"><span class="description"></span><pre>$_size</pre></a></li>
+</ul>
 </li>
 </ul>
 </div>
@@ -140,7 +153,7 @@
 <i class="icon-custom icon-method"></i> Methods</h3>
 <a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
 <h2>Construct DoublyLinkedList class</h2>
-<pre>__construct(\Data\LinkedLists\DoublyLinkedNode $data) </pre>
+<pre>__construct() </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -148,10 +161,18 @@
 <th>access</th>
 <td>public</td>
 </tr></table>
-<h3>Parameters</h3>
-<div class="subelement argument">
-<h4>$data</h4>
-<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><p>Root node for the linked list</p></div>
+</div></div>
+</div>
+<a id="method___toString"></a><div class="element clickable method public method___toString" data-toggle="collapse" data-target=".method___toString .collapse">
+<h2>ToString function to preview the sorted linked list in String format</h2>
+<pre>__toString() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
 </div></div>
 </div>
 <a id="method_add"></a><div class="element clickable method public method_add" data-toggle="collapse" data-target=".method_add .collapse">
@@ -159,7 +180,7 @@
 <pre>add(mixed $value) : int</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
-<div class="long_description"><p>This method will create a new IDoublyLinkedNode instance assigning a
+<div class="long_description"><p>This method will create a new DoublyLinkedNode instance assigning a
 numeric key value to the node and the value is assigned to the
 node's value property.</p></div>
 <table class="table table-bordered"><tr>
@@ -177,7 +198,7 @@ node's value property.</p></div>
 </div>
 <a id="method_addNode"></a><div class="element clickable method public method_addNode" data-toggle="collapse" data-target=".method_addNode .collapse">
 <h2>Adds an IDoublyLinkedNode instance onto the end of the list.</h2>
-<pre>addNode(\Data\LinkedLists\IDoublyLinkedNode $node) : mixed</pre>
+<pre>addNode(\Data\ILinkedNode $node) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>The node that is to be added to the list should have its key reset so that
@@ -189,7 +210,7 @@ it is the next key in the list's key sequence.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$node</h4>
-<code>\Data\LinkedLists\IDoublyLinkedNode</code><p>The IDoublyLinkedNode to add.</p></div>
+<code><a href="../classes/Data.ILinkedNode.html">\Data\ILinkedNode</a></code><p>The IDoublyLinkedNode to add.</p></div>
 <h3>Returns</h3>
 <div class="subelement response">
 <code>mixed</code>The key value of the node that was added.</div>
@@ -249,6 +270,21 @@ will be returned as a key => value representation.</p></div>
 <code>bool</code>Returns true if the $key was found, otherwise returns false.</div>
 </div></div>
 </div>
+<a id="method_count"></a><div class="element clickable method public method_count" data-toggle="collapse" data-target=".method_count .collapse">
+<h2>returns the size of the linked List</h2>
+<pre>count() : double</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>double</code>size of the linked list</div>
+</div></div>
+</div>
 <a id="method_find"></a><div class="element clickable method public method_find" data-toggle="collapse" data-target=".method_find .collapse">
 <h2>Returns the IDoublyLinkedNode object by the specified value.</h2>
 <pre>find(mixed $value) : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
@@ -290,7 +326,7 @@ IDoublyLinkedNode instances whose value is equal to $value, otherwise returns nu
 </div>
 <a id="method_findFirst"></a><div class="element clickable method public method_findFirst" data-toggle="collapse" data-target=".method_findFirst .collapse">
 <h2>Returns the first IDoublyLinkedNode instance found by with the specified value.</h2>
-<pre>findFirst(mixed $value) </pre>
+<pre>findFirst(mixed $value) : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -303,6 +339,9 @@ IDoublyLinkedNode instances whose value is equal to $value, otherwise returns nu
 <h4>$value</h4>
 <code>mixed</code>
 </div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>returns the first instance found with sepcified value</div>
 </div></div>
 </div>
 <a id="method_findLast"></a><div class="element clickable method public method_findLast" data-toggle="collapse" data-target=".method_findLast .collapse">
@@ -347,7 +386,7 @@ IDoublyLinkedNode that contains the value, otherwise null if none found.</div>
 </div>
 <a id="method_getFirst"></a><div class="element clickable method public method_getFirst" data-toggle="collapse" data-target=".method_getFirst .collapse">
 <h2>Returns the first element in the list.</h2>
-<pre>getFirst() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<pre>getFirst() : <a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a> | null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -357,12 +396,24 @@ IDoublyLinkedNode that contains the value, otherwise null if none found.</div>
 </tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
-<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the first IDoublyLinkedNode in the list, otherwise returns NULL.</div>
+<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><code>null</code>Returns the first DoublyLinkedNode in the list, otherwise returns NULL.</div>
+</div></div>
+</div>
+<a id="method_getIterator"></a><div class="element clickable method public method_getIterator" data-toggle="collapse" data-target=".method_getIterator .collapse">
+<h2>getIterator function to be implemented</h2>
+<pre>getIterator() </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
 </div></div>
 </div>
 <a id="method_getLast"></a><div class="element clickable method public method_getLast" data-toggle="collapse" data-target=".method_getLast .collapse">
 <h2>Returns the last element in the list.</h2>
-<pre>getLast() : \Data\LinkedLists\IDoublyLinkedNode | null</pre>
+<pre>getLast() : <a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a> | null</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
@@ -372,7 +423,7 @@ IDoublyLinkedNode that contains the value, otherwise null if none found.</div>
 </tr></table>
 <h3>Returns</h3>
 <div class="subelement response">
-<code>\Data\LinkedLists\IDoublyLinkedNode</code><code>null</code>Returns the last IDoublyLinkedNode in the list, otherwise returns NULL.</div>
+<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><code>null</code>Returns the last DoublyLinkedNode in the list, otherwise returns NULL.</div>
 </div></div>
 </div>
 <a id="method_insertAfter"></a><div class="element clickable method public method_insertAfter" data-toggle="collapse" data-target=".method_insertAfter .collapse">
@@ -420,7 +471,7 @@ next numeric value in the sequence of nodes.</p></div>
 <code>int</code><p>Contains the key value to insert a new IDoublyLinkedNode before.</p></div>
 <div class="subelement argument">
 <h4>$value</h4>
-<code>mixed</code><p>Contains the value used to create a new IDoublyLinkedNode with and inserted before $before.</p>
+<code>mixed</code><p>Contains the value used to create a new IDoublyLinkedNode with and inserted before   $before.</p>
 </div>
 <h3>Returns</h3>
 <div class="subelement response">
@@ -624,7 +675,7 @@ remaining nodes that follow the removed.</p></div>
 </div>
 <a id="method_removeNode"></a><div class="element clickable method public method_removeNode" data-toggle="collapse" data-target=".method_removeNode .collapse">
 <h2>Removes the specified node from the list.</h2>
-<pre>removeNode(\Data\LinkedLists\IDoublyLinkedNode $node) </pre>
+<pre>removeNode(\Data\ILinkedNode $node) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>If the node exists, it will be removed and all nodes that follow will be shifted and their keys
@@ -636,7 +687,25 @@ will be adjusted.</p></div>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$node</h4>
-<code>\Data\LinkedLists\IDoublyLinkedNode</code><p>The node to remove from the list.</p></div>
+<code><a href="../classes/Data.ILinkedNode.html">\Data\ILinkedNode</a></code><p>The node to remove from the list.</p></div>
+</div></div>
+</div>
+<a id="method_reverse"></a><div class="element clickable method public method_reverse" data-toggle="collapse" data-target=".method_reverse .collapse">
+<h2>Reverses this list's set of nodes.</h2>
+<pre>reverse() </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>access</th>
+<td>public</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::reverse()</td>
+</tr>
+</table>
 </div></div>
 </div>
 <a id="method_sort"></a><div class="element clickable method public method_sort" data-toggle="collapse" data-target=".method_sort .collapse">
@@ -652,9 +721,31 @@ remains (n - 1) + 1 for all nodes.</p></div>
 </tr></table>
 </div></div>
 </div>
+<a id="method_sortAscending"></a><div class="element clickable method public method_sortAscending" data-toggle="collapse" data-target=".method_sortAscending .collapse">
+<h2>Sort Ascending Function to sort given list with ascending property</h2>
+<pre>sortAscending(\Data\LinkedLists\DoublyLinkedNode $link, \Data\LinkedLists\DoublyLinkedNode $next) : double</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>access</th>
+<td>public</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$link</h4>
+<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><p>left hand side</p></div>
+<div class="subelement argument">
+<h4>$next</h4>
+<code><a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></code><p>right hand side</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>double</code>will return 0 | 1 | -1 depending on the given ascending order</div>
+</div></div>
+</div>
 <a id="method_sortBy"></a><div class="element clickable method public method_sortBy" data-toggle="collapse" data-target=".method_sortBy .collapse">
 <h2>Sorts the list by using a callback to specify the value to compare on.</h2>
-<pre>sortBy(\Data\LinkedLists\callable $predicate) </pre>
+<pre>sortBy(callable $predicate) </pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"><p>The callback should take one parameter of type IDoublyLinkedNode and return a single
@@ -669,18 +760,97 @@ value that will be used for comparison.</p></div>
 <code>callable</code><p>The specified callback.</p></div>
 </div></div>
 </div>
+<a id="method_resetKeys"></a><div class="element clickable method protected method_resetKeys" data-toggle="collapse" data-target=".method_resetKeys .collapse">
+<h2>resetKeys function</h2>
+<pre>resetKeys(\Data\ILinkedNode $first, double $start) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>will reset every key within the lest starting at $start value</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::resetKeys()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$first</h4>
+<code><a href="../classes/Data.ILinkedNode.html">\Data\ILinkedNode</a></code><p>node to start at</p></div>
+<div class="subelement argument">
+<h4>$start</h4>
+<code>double</code><p>the key integer to start the loop</p></div>
+</div></div>
+</div>
 <h3>
 <i class="icon-custom icon-property"></i> Properties</h3>
-<a id="property__tail_node"> </a><div class="element clickable property private property__tail_node" data-toggle="collapse" data-target=".property__tail_node .collapse">
+<a id="property__data"> </a><div class="element clickable property protected property__data" data-toggle="collapse" data-target=".property__data .collapse">
 <h2></h2>
-<pre>$_tail_node : <a href="../classes/Data.LinkedLists.DoublyLinkedNode.html">\Data\LinkedLists\DoublyLinkedNode</a></pre>
-<div class="labels"></div>
+<pre>$_data : mixed</pre>
+<div class="labels"><span class="label">Inherited</span></div>
 <div class="row collapse"><div class="detail-description">
 <div class="long_description"></div>
-<table class="table table-bordered"><tr>
+<table class="table table-bordered">
+<tr>
 <th>access</th>
 <td>private</td>
-</tr></table>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::$$_data</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="property__firstNode"> </a><div class="element clickable property protected property__firstNode" data-toggle="collapse" data-target=".property__firstNode .collapse">
+<h2></h2>
+<pre>$_firstNode : <a href="../classes/Data.LinkedLists.SinglyLinkedNode.html">\Data\LinkedLists\SinglyLinkedNode</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>access</th>
+<td>private</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::$$_firstNode</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="property__lastNode"> </a><div class="element clickable property protected property__lastNode" data-toggle="collapse" data-target=".property__lastNode .collapse">
+<h2></h2>
+<pre>$_lastNode : <a href="../classes/Data.LinkedLists.SinglyLinkedNode.html">\Data\LinkedLists\SinglyLinkedNode</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>access</th>
+<td>private</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::$$_lastNode</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="property__size"> </a><div class="element clickable property protected property__size" data-toggle="collapse" data-target=".property__size .collapse">
+<h2></h2>
+<pre>$_size : double</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>access</th>
+<td>private</td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\Data\LinkedLists\SinglyLinkedList::$$_size</td>
+</tr>
+</table>
 </div></div>
 </div>
 </div>
@@ -690,7 +860,7 @@ value that will be used for comparison.</p></div>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a12</a> and<br>
-            generated on 2013-02-20T16:53:05-05:00.<br></footer></div>
+            generated on 2013-03-07T23:38:56-05:00.<br></footer></div>
 </div>
 </body>
 </html>
