@@ -63,9 +63,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testGetLast()
     {
         $next = new \Data\LinkedLists\SinglyLinkedNode('bar');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('foo', $next);
+        $node = new \Data\LinkedLists\SinglyLinkedNode('foo');
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($node);
+        $test->addNode($next);
         
         $this->assertEquals($next, $test->getLast());
         $this->assertEquals('bar', $test->getLast()->getValue());
@@ -154,9 +155,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testContains()
     {
         $next = new \Data\LinkedLists\SinglyLinkedNode('cake');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('cup', $next);
+        $node = new \Data\LinkedLists\SinglyLinkedNode('cup');
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($node);
+        $test->addNode($next);
         
         $this->assertEquals(true, $test->contains('cake'));
         $this->assertEquals(true, $test->contains('cup'));
@@ -190,9 +192,10 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testFind()
     {
         $next = new \Data\LinkedLists\SinglyLinkedNode('apple');
-        $node = new \Data\LinkedLists\SinglyLinkedNode('banana', $next);
+        $node = new \Data\LinkedLists\SinglyLinkedNode('banana');
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($node);
+        $test->addNode($next);
         
         $this->assertEquals($next, $test->find('apple'));
         $this->assertEquals($node, $test->find('banana'));
@@ -365,10 +368,12 @@ class SinglyLinkedListTest extends \PHPUnit_Framework_TestCase
     public function testPeekLast()
     {
         $nodeA = new \Data\LinkedLists\SinglyLinkedNode('person');
-        $nodeB = new \Data\LinkedLists\SinglyLinkedNode('place', $nodeA);
-        $nodeC = new \Data\LinkedLists\SinglyLinkedNode('thing', $nodeB);
+        $nodeB = new \Data\LinkedLists\SinglyLinkedNode('place');
+        $nodeC = new \Data\LinkedLists\SinglyLinkedNode('thing');
         $test = new \Data\LinkedLists\SinglyLinkedList();
         $test->addNode($nodeC);
+        $test->addNode($nodeB);
+        $test->addNode($nodeA);
         
         $this->assertEquals($nodeA, $test->peekLast());
     }
